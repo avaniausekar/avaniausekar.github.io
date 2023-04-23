@@ -4,7 +4,4 @@ title: Networking
 permalink: /networking/
 category: networking
 ---
-
-Hello, I am Avani.
-
-Welcome to my website.
+>Interesting networks stuff.
