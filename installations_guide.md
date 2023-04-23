@@ -4,7 +4,5 @@ title: Installations
 permalink: /installation_guide/
 category: installations
 ---
-
-Hello, I am Avani.
-
-Welcome to my website.
+>Tricky installations.
+>>Even a small mistake can hamper your installation.
