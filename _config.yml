@@ -13,18 +13,30 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Avani Ausekar
+repository: avaniausekar/avaniausekar.github.io
+title:  Avani Ausekar
 email: avaniausekar@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   A personal website and a blog
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
+author: Avani Ausekar
+
 #twitter_username: jekyllrb
+linkedin_username: avaniausekar
 github_username:  avaniausekar
+
+# title-logo is a new field that,when used displays a logo
+# instead of a custom text. Ideally the image should be 50px high
+# title-logo: /images/title-logo.png
+# title-logo: /images/title-logo.png
 
 # Build settings
 markdown: kramdown
-theme: minima
+
+#removed minima theme as it is now a regular theme
+#theme: minima
+
 plugins:
   - jekyll-feed
 
