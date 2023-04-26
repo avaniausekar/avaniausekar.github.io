@@ -31,14 +31,14 @@ Let us see.
 ----
 ****
 Now, if I want to start a process called `ls` to list all the files in a directory.
-The process is started out like this:
+The process starts out like this:
 
 {% highlight ruby %}
 my parent
      |- me 
 {% endhighlight %}
 
-When I run `fork()` I have a child which is a clone of myself.
+When I run `fork()`, a child is created which is a clone of myself.
 
 {% highlight ruby %}
 my parent
@@ -54,7 +54,7 @@ my parent
          |-- ls
 {% endhighlight %}
 
-Once `ls` exits I will be all by myself.(Almost)
+Once `ls` exits I will be all alone by myself.(Almost)
 
 {% highlight ruby %}
 my parent
@@ -62,7 +62,7 @@ my parent
          |-- ls(zombie)
 {% endhighlight %}
 
-At this point `ls` is actually a zombie process! That means it’s dead, but it’s waiting around for me in case I want to check on its return value (using the wait system call.) Once I get its return value, I will really be all alone again.
+At this point `ls` is actually a zombie process! That means it’s dead, but it’s waiting around for the parent in case the parent wants to check on its (child's) return value (using the wait system call.) Once I get its return value, I will really be all alone again.
 
 {% highlight ruby %}
 my parent
@@ -75,14 +75,14 @@ Example implementation of `fork()` and `exec()` in a C program:
 
 {% highlight ruby %}
 int pid = fork();
-// now i am split in two! augh!
+// now I am split in two! aaaaugh!
 // who am I? I could be either the child or the parent
 if (pid == 0) {
     // ok I am the child process
     // ls will take over and I'll be a totally different process 
     exec(["ls"])
 } else if (pid == -1) {
-    // omg fork failed -- this is a disaster 
+    // omg fork failed -- this is a disaster :(
 } else {
     // ok i am the parent
     // continue my business being a cool program
@@ -112,3 +112,5 @@ never returns.
 **References:**
 
 *Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces*
+
+Got this awesome concept from *Julia Evans* blog

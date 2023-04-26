@@ -79,12 +79,12 @@
 <hr />
 <hr />
 <p>Now, if I want to start a process called <code class="language-plaintext highlighter-rouge">ls</code> to list all the files in a directory.
-The process is started out like this:</p>
+The process starts out like this:</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my</span> <span class="n">parent</span>
      <span class="o">|-</span> <span class="n">me</span> </code></pre></figure>
 
-<p>When I run <code class="language-plaintext highlighter-rouge">fork()</code> I have a child which is a clone of myself.</p>
+<p>When I run <code class="language-plaintext highlighter-rouge">fork()</code>, a child is created which is a clone of myself.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my</span> <span class="n">parent</span>
      <span class="o">|-</span> <span class="n">me</span> 
@@ -96,13 +96,13 @@ The process is started out like this:</p>
      <span class="o">|-</span> <span class="n">me</span> 
          <span class="o">|--</span> <span class="n">ls</span></code></pre></figure>
 
-<p>Once <code class="language-plaintext highlighter-rouge">ls</code> exits I will be all by myself.(Almost)</p>
+<p>Once <code class="language-plaintext highlighter-rouge">ls</code> exits I will be all alone by myself.(Almost)</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my</span> <span class="n">parent</span>
      <span class="o">|-</span> <span class="n">me</span> 
          <span class="o">|--</span> <span class="n">ls</span><span class="p">(</span><span class="n">zombie</span><span class="p">)</span></code></pre></figure>
 
-<p>At this point <code class="language-plaintext highlighter-rouge">ls</code> is actually a zombie process! That means it’s dead, but it’s waiting around for me in case I want to check on its return value (using the wait system call.) Once I get its return value, I will really be all alone again.</p>
+<p>At this point <code class="language-plaintext highlighter-rouge">ls</code> is actually a zombie process! That means it’s dead, but it’s waiting around for the parent in case the parent wants to check on its (child’s) return value (using the wait system call.) Once I get its return value, I will really be all alone again.</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">my</span> <span class="n">parent</span>
      <span class="o">|-</span> <span class="n">me</span> </code></pre></figure>
@@ -112,14 +112,14 @@ The process is started out like this:</p>
 <p>Example implementation of <code class="language-plaintext highlighter-rouge">fork()</code> and <code class="language-plaintext highlighter-rouge">exec()</code> in a C program:</p>
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="nb">fork</span><span class="p">();</span>
-<span class="sr">//</span> <span class="n">now</span> <span class="n">i</span> <span class="n">am</span> <span class="nb">split</span> <span class="k">in</span> <span class="n">two!</span> <span class="n">augh!</span>
+<span class="sr">//</span> <span class="n">now</span> <span class="no">I</span> <span class="n">am</span> <span class="nb">split</span> <span class="k">in</span> <span class="n">two!</span> <span class="n">aaaaugh!</span>
 <span class="sr">//</span> <span class="n">who</span> <span class="n">am</span> <span class="no">I</span><span class="p">?</span> <span class="no">I</span> <span class="n">could</span> <span class="n">be</span> <span class="n">either</span> <span class="n">the</span> <span class="n">child</span> <span class="n">or</span> <span class="n">the</span> <span class="n">parent</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="sr">//</span> <span class="n">ok</span> <span class="no">I</span> <span class="n">am</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span>
     <span class="sr">//</span> <span class="n">ls</span> <span class="n">will</span> <span class="n">take</span> <span class="n">over</span> <span class="n">and</span> <span class="no">I</span><span class="err">'</span><span class="n">ll</span> <span class="n">be</span> <span class="n">a</span> <span class="n">totally</span> <span class="n">different</span> <span class="n">process</span> 
     <span class="nb">exec</span><span class="p">([</span><span class="s2">"ls"</span><span class="p">])</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="sr">//</span> <span class="n">omg</span> <span class="nb">fork</span> <span class="n">failed</span> <span class="o">--</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">disaster</span> 
+    <span class="sr">//</span> <span class="n">omg</span> <span class="nb">fork</span> <span class="n">failed</span> <span class="o">--</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">disaster</span> <span class="p">:(</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="sr">//</span> <span class="n">ok</span> <span class="n">i</span> <span class="n">am</span> <span class="n">the</span> <span class="n">parent</span>
     <span class="sr">//</span> <span class="n">continue</span> <span class="n">my</span> <span class="n">business</span> <span class="n">being</span> <span class="n">a</span> <span class="n">cool</span> <span class="n">program</span>
@@ -150,6 +150,8 @@ never returns.</p>
 <p><strong>References:</strong></p>
 
 <p><em>Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces</em></p>
+
+<p>Got this awesome concept from <em>Julia Evans</em> blog</p>
 
   </div><a class="u-url" href="/os/2023/04/25/process-creation.html" hidden></a>
 </article>
