@@ -78,6 +78,25 @@
 
 <hr />
 <hr />
+<p>Example code snippet of <code class="language-plaintext highlighter-rouge">fork()</code> and <code class="language-plaintext highlighter-rouge">exec()</code> in a C program:</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="nb">fork</span><span class="p">();</span>
+<span class="sr">//</span> <span class="n">now</span> <span class="no">I</span> <span class="n">am</span> <span class="nb">split</span> <span class="k">in</span> <span class="n">two!</span> <span class="n">aaaaugh!</span>
+<span class="sr">//</span> <span class="n">who</span> <span class="n">am</span> <span class="no">I</span><span class="p">?</span> <span class="no">I</span> <span class="n">could</span> <span class="n">be</span> <span class="n">either</span> <span class="n">the</span> <span class="n">child</span> <span class="n">or</span> <span class="n">the</span> <span class="n">parent</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="sr">//</span> <span class="n">ok</span> <span class="no">I</span> <span class="n">am</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span>
+    <span class="sr">//</span> <span class="n">ls</span> <span class="n">will</span> <span class="n">take</span> <span class="n">over</span> <span class="n">and</span> <span class="no">I</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">totally</span> <span class="n">different</span> <span class="n">process</span> 
+    <span class="nb">exec</span><span class="p">([</span><span class="s2">"ls"</span><span class="p">])</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+    <span class="sr">//</span> <span class="n">omg</span> <span class="nb">fork</span> <span class="n">failed</span> <span class="o">--</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">disaster</span> <span class="p">:(</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="sr">//</span> <span class="n">ok</span> <span class="n">i</span> <span class="n">am</span> <span class="n">the</span> <span class="n">parent</span>
+    <span class="sr">//</span> <span class="n">continue</span> <span class="n">my</span> <span class="n">business</span> <span class="n">being</span> <span class="n">a</span> <span class="n">cool</span> <span class="n">program</span>
+    <span class="sr">//</span> <span class="no">I</span> <span class="n">could</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">the</span> <span class="n">child</span> <span class="n">to</span> <span class="n">finish</span> <span class="k">if</span> <span class="no">I</span> <span class="n">want</span>
+<span class="p">}</span></code></pre></figure>
+
+<hr />
+<hr />
 <p>Now, if I want to start a process called <code class="language-plaintext highlighter-rouge">ls</code> to list all the files in a directory.
 The process starts out like this:</p>
 
@@ -109,26 +128,6 @@ The process starts out like this:</p>
 
 <hr />
 <hr />
-<p>Example implementation of <code class="language-plaintext highlighter-rouge">fork()</code> and <code class="language-plaintext highlighter-rouge">exec()</code> in a C program:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="nb">fork</span><span class="p">();</span>
-<span class="sr">//</span> <span class="n">now</span> <span class="no">I</span> <span class="n">am</span> <span class="nb">split</span> <span class="k">in</span> <span class="n">two!</span> <span class="n">aaaaugh!</span>
-<span class="sr">//</span> <span class="n">who</span> <span class="n">am</span> <span class="no">I</span><span class="p">?</span> <span class="no">I</span> <span class="n">could</span> <span class="n">be</span> <span class="n">either</span> <span class="n">the</span> <span class="n">child</span> <span class="n">or</span> <span class="n">the</span> <span class="n">parent</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="sr">//</span> <span class="n">ok</span> <span class="no">I</span> <span class="n">am</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span>
-    <span class="sr">//</span> <span class="n">ls</span> <span class="n">will</span> <span class="n">take</span> <span class="n">over</span> <span class="n">and</span> <span class="no">I</span><span class="err">'</span><span class="n">ll</span> <span class="n">be</span> <span class="n">a</span> <span class="n">totally</span> <span class="n">different</span> <span class="n">process</span> 
-    <span class="nb">exec</span><span class="p">([</span><span class="s2">"ls"</span><span class="p">])</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-    <span class="sr">//</span> <span class="n">omg</span> <span class="nb">fork</span> <span class="n">failed</span> <span class="o">--</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">disaster</span> <span class="p">:(</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="sr">//</span> <span class="n">ok</span> <span class="n">i</span> <span class="n">am</span> <span class="n">the</span> <span class="n">parent</span>
-    <span class="sr">//</span> <span class="n">continue</span> <span class="n">my</span> <span class="n">business</span> <span class="n">being</span> <span class="n">a</span> <span class="n">cool</span> <span class="n">program</span>
-    <span class="sr">//</span> <span class="no">I</span> <span class="n">could</span> <span class="n">wait</span> <span class="k">for</span> <span class="n">the</span> <span class="n">child</span> <span class="n">to</span> <span class="n">finish</span> <span class="k">if</span> <span class="no">I</span> <span class="n">want</span>
-<span class="p">}</span></code></pre></figure>
-
-<hr />
-<hr />
-
 <p>The following paragraph from <em>Operating Systems:Three Easy Pieces</em> sums up the gist of the article:</p>
 
 <blockquote>

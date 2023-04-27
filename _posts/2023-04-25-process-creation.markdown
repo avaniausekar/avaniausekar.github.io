@@ -30,6 +30,27 @@ Let us see.
 
 ----
 ****
+Example code snippet of `fork()` and `exec()` in a C program:
+
+{% highlight ruby %}
+int pid = fork();
+// now I am split in two! aaaaugh!
+// who am I? I could be either the child or the parent
+if (pid == 0) {
+    // ok I am the child process
+    // ls will take over and I will be a totally different process 
+    exec(["ls"])
+} else if (pid == -1) {
+    // omg fork failed -- this is a disaster :(
+} else {
+    // ok i am the parent
+    // continue my business being a cool program
+    // I could wait for the child to finish if I want
+}
+{% endhighlight %}
+
+----
+****
 Now, if I want to start a process called `ls` to list all the files in a directory.
 The process starts out like this:
 
@@ -71,28 +92,6 @@ my parent
 
 ----
 ****
-Example implementation of `fork()` and `exec()` in a C program:
-
-{% highlight ruby %}
-int pid = fork();
-// now I am split in two! aaaaugh!
-// who am I? I could be either the child or the parent
-if (pid == 0) {
-    // ok I am the child process
-    // ls will take over and I'll be a totally different process 
-    exec(["ls"])
-} else if (pid == -1) {
-    // omg fork failed -- this is a disaster :(
-} else {
-    // ok i am the parent
-    // continue my business being a cool program
-    // I could wait for the child to finish if I want
-}
-{% endhighlight %}
-
-----
-****
-
 The following paragraph from *Operating Systems:Three Easy Pieces* sums up the gist of the article:
 
 >The fork() system call is strange; its partner in crime, exec(), is not
