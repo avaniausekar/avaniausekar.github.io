@@ -26,8 +26,7 @@ Now that you have these 3 things in your toolkit let us proceed for some debuggi
 
 Error messages usually contain a lot of information about what went wrong. But they sometimes can be very large and overwhelming to read. You can  use these tricks to extract the necessary information from them:
 1. Start fixing the first error message in case of multiple error messages. Fixing the first one often fixes the remaining errors
-2. Reread the message - as it is possible that you have misinterpreted or disregarded the error
-3. Search if any solution is available on the internet for the error
+2. Search if any solution is available on the internet for the error
 
 **Step 2: Brainstorm possible reasons for the error**
 
@@ -58,7 +57,7 @@ After finding possible reasons try to narrow it down to the most possible reason
 **Step 5: This also helps**
 
 1. Take a break
-2. Ask your senior
+2. Ask a friend
 3. Explain the error/bug out loud
 4. Finding tools that make debugging easier - eg. debuggers, profilers, tracers, fuzzers, etc
 
@@ -68,7 +67,7 @@ After finding possible reasons try to narrow it down to the most possible reason
 3. Document your bug 
 
 ----
-Debugging can be an interesting adventure - you just need to change your perspective!
+Debugging can be an interesting adventure.
 
 I would like to end this article by quoting Edsger Dijkstra:
 >" Program testing can be used to show the presence of bugs, but never to show their absence! "
