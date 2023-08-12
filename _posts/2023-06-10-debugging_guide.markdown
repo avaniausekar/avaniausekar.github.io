@@ -40,10 +40,12 @@ After finding possible reasons try to narrow it down to the most possible reason
 
 **Step 3: Investigate**
 
-1. Add lots of print statements
-2. Use a debugger
-3. Look at logs 
-4. Read the documentation (Important)
+1. Read the documentation (Important)
+2. Add lots of print statements
+3. Use a debugger
+4. Look at logs 
+
+A meme that highlights the importance of reading the docs:
 
 <img src="{{ site.baseurl }}/images/joke.png">
 
