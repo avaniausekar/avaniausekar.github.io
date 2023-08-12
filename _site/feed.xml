@@ -1,4 +1,65 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-06-10T17:46:53+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Avani Ausekar</title><subtitle>A personal website and a blog</subtitle><author><name>Avani Ausekar</name></author><entry><title type="html">Debugging 101 - Love Your Bugs</title><link href="http://localhost:4000/installations/2023/06/10/debugging_guide.html" rel="alternate" type="text/html" title="Debugging 101 - Love Your Bugs" /><published>2023-06-10T09:30:45+05:30</published><updated>2023-06-10T09:30:45+05:30</updated><id>http://localhost:4000/installations/2023/06/10/debugging_guide</id><content type="html" xml:base="http://localhost:4000/installations/2023/06/10/debugging_guide.html">&lt;p&gt;Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-12T17:23:05+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Avani Ausekar</title><subtitle>A personal website and a blog</subtitle><author><name>Avani Ausekar</name></author><entry><title type="html">Deploy a Python Server with Flask on Windows Apache Server</title><link href="http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html" rel="alternate" type="text/html" title="Deploy a Python Server with Flask on Windows Apache Server" /><published>2023-07-22T09:30:45+05:30</published><updated>2023-07-22T09:30:45+05:30</updated><id>http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache</id><content type="html" xml:base="http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html">&lt;p&gt;Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
+I programmed this script in python using flask framework and now I wanted to deploy it to the server.
+But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.&lt;/p&gt;
+
+&lt;p&gt;So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)&lt;/p&gt;
+
+&lt;p&gt;Prerequisites:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Python - can be downloaded from &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Flask - can be installed by typing the following command in cmd 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install flask&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;WfastCGI module - installed by typing the following command in cmd &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install wfastcgi&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deploying using Windows IIS Server:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;I have used this &lt;a href=&quot;https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3&quot;&gt;link&lt;/a&gt; to install until step IV with some changes.
+&lt;strong&gt;CGI&lt;/strong&gt; module will be found in 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Server Roles &amp;gt; Web Server(IIS) &amp;gt; Web Server &amp;gt; Application Development &amp;gt; CGI&lt;/code&gt;
+(If not found at the exact location as given in article)
+&lt;a href=&quot;https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3&quot;&gt;article link&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If after all steps – if you get &lt;em&gt;internal server&lt;/em&gt; error when you access the website url - you can refer these steps: reference &lt;a href=&quot;https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured&quot;&gt;Error an unknown FastCGI error occurred&lt;/a&gt;
+&lt;img src=&quot;/images/help.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;To deploy it on port 4000:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Go to IIS Manager&lt;/li&gt;
+      &lt;li&gt;In sites dropdown select the TLS checker website&lt;/li&gt;
+      &lt;li&gt;Select Edit site&amp;gt;Bindings&lt;/li&gt;
+      &lt;li&gt;Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https &amp;gt; edit &amp;gt;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Enter port 4000&lt;/li&gt;
+      &lt;li&gt;Add hostname&lt;/li&gt;
+      &lt;li&gt;You may have to open the port 4000 in inbound firewall rules&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deploying using WAMP Server :&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;This article is very apt but I might go into more details about this installation in coming weeks.
+&lt;a href=&quot;https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed&quot;&gt;https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Thank - You for reading !&lt;/p&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Avani&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;</content><author><name>Avani Ausekar</name></author><category term="tech_insights" /><summary type="html">Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to. I programmed this script in python using flask framework and now I wanted to deploy it to the server. But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.</summary></entry><entry><title type="html">Debugging 101 - Love Your Bugs</title><link href="http://localhost:4000/tech_insights/2023/06/10/debugging_guide.html" rel="alternate" type="text/html" title="Debugging 101 - Love Your Bugs" /><published>2023-06-10T09:30:45+05:30</published><updated>2023-06-10T09:30:45+05:30</updated><id>http://localhost:4000/tech_insights/2023/06/10/debugging_guide</id><content type="html" xml:base="http://localhost:4000/tech_insights/2023/06/10/debugging_guide.html">&lt;p&gt;Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Improve your developer productivity&lt;/li&gt;
@@ -23,7 +84,6 @@
 &lt;p&gt;Error messages usually contain a lot of information about what went wrong. But they sometimes can be very large and overwhelming to read. You can  use these tricks to extract the necessary information from them:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;Start fixing the first error message in case of multiple error messages. Fixing the first one often fixes the remaining errors&lt;/li&gt;
-  &lt;li&gt;Reread the message - as it is possible that you have misinterpreted or disregarded the error&lt;/li&gt;
   &lt;li&gt;Search if any solution is available on the internet for the error&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -62,7 +122,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;Take a break&lt;/li&gt;
-  &lt;li&gt;Ask your senior&lt;/li&gt;
+  &lt;li&gt;Ask a friend&lt;/li&gt;
   &lt;li&gt;Explain the error/bug out loud&lt;/li&gt;
   &lt;li&gt;Finding tools that make debugging easier - eg. debuggers, profilers, tracers, fuzzers, etc&lt;/li&gt;
 &lt;/ol&gt;
@@ -75,12 +135,12 @@
 &lt;/ol&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;Debugging can be an interesting adventure - you just need to change your perspective!&lt;/p&gt;
+&lt;p&gt;Debugging can be an interesting adventure.&lt;/p&gt;
 
 &lt;p&gt;I would like to end this article by quoting Edsger Dijkstra:&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;” Program testing can be used to show the presence of bugs, but never to show their absence! “&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name>Avani Ausekar</name></author><category term="installations" /><summary type="html">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:</summary></entry><entry><title type="html">Creating Processes</title><link href="http://localhost:4000/os/2023/04/25/process-creation.html" rel="alternate" type="text/html" title="Creating Processes" /><published>2023-04-25T09:30:45+05:30</published><updated>2023-04-25T09:30:45+05:30</updated><id>http://localhost:4000/os/2023/04/25/process-creation</id><content type="html" xml:base="http://localhost:4000/os/2023/04/25/process-creation.html">&lt;p&gt;In this article I have tried to explain the important things that happen during a process creation. I always had doubts about&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Avani Ausekar</name></author><category term="tech_insights" /><summary type="html">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:</summary></entry><entry><title type="html">Creating Processes</title><link href="http://localhost:4000/os/2023/04/25/process-creation.html" rel="alternate" type="text/html" title="Creating Processes" /><published>2023-04-25T09:30:45+05:30</published><updated>2023-04-25T09:30:45+05:30</updated><id>http://localhost:4000/os/2023/04/25/process-creation</id><content type="html" xml:base="http://localhost:4000/os/2023/04/25/process-creation.html">&lt;p&gt;In this article I have tried to explain the important things that happen during a process creation. I always had doubts about&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;How a process is created in OS ?&lt;/li&gt;
   &lt;li&gt;From where does it all start ?&lt;/li&gt;

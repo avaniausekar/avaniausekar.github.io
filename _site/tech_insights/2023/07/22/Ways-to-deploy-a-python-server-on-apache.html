@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Deploy a Python Server with Flask on Windows Apache Server | Avani Ausekar</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Deploy a Python Server with Flask on Windows Apache Server" />
+<meta name="author" content="Avani Ausekar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to. I programmed this script in python using flask framework and now I wanted to deploy it to the server. But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server." />
+<meta property="og:description" content="Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to. I programmed this script in python using flask framework and now I wanted to deploy it to the server. But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server." />
+<link rel="canonical" href="http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html" />
+<meta property="og:url" content="http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html" />
+<meta property="og:site_name" content="Avani Ausekar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-07-22T09:30:45+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Deploy a Python Server with Flask on Windows Apache Server" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Avani Ausekar"},"dateModified":"2023-07-22T09:30:45+05:30","datePublished":"2023-07-22T09:30:45+05:30","description":"Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to. I programmed this script in python using flask framework and now I wanted to deploy it to the server. But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.","headline":"Deploy a Python Server with Flask on Windows Apache Server","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html"},"url":"http://localhost:4000/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Avani Ausekar" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><!--Original title display code from the minima theme
+    <a class="site-title" rel="author" href="/">Avani Ausekar</a>-->
+    <a class="site-title" rel="author" href="/"><img src="/favicon.png" width="26" /> Avani Ausekar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/musings/">Musings</a><a class="page-link" href="/networking/">Networking</a><a class="page-link" href="/operatingsystems/">OS</a><a class="page-link" href="/security/">Security</a><a class="page-link" href="/tech_insights/">Tech Insights</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Deploy a Python Server with Flask on Windows Apache Server</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2023-07-22T09:30:45+05:30" itemprop="datePublished">
+        Jul 22, 2023
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
+I programmed this script in python using flask framework and now I wanted to deploy it to the server.
+But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.</p>
+
+<p>So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)</p>
+
+<p>Prerequisites:</p>
+<ul>
+  <li>Python - can be downloaded from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
+  <li>Flask - can be installed by typing the following command in cmd 
+<code class="language-plaintext highlighter-rouge">pip install flask</code></li>
+  <li>WfastCGI module - installed by typing the following command in cmd <code class="language-plaintext highlighter-rouge">pip install wfastcgi</code></li>
+</ul>
+
+<hr />
+
+<ul>
+  <li><strong>Deploying using Windows IIS Server:</strong></li>
+</ul>
+
+<ol>
+  <li>
+    <p>I have used this <a href="https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3">link</a> to install until step IV with some changes.
+<strong>CGI</strong> module will be found in 
+<code class="language-plaintext highlighter-rouge">Server Roles &gt; Web Server(IIS) &gt; Web Server &gt; Application Development &gt; CGI</code>
+(If not found at the exact location as given in article)
+<a href="https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3">article link</a></p>
+  </li>
+  <li>
+    <p>If after all steps – if you get <em>internal server</em> error when you access the website url - you can refer these steps: reference <a href="https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured">Error an unknown FastCGI error occurred</a>
+<img src="/images/help.png" /></p>
+  </li>
+  <li>
+    <p>To deploy it on port 4000:</p>
+    <ul>
+      <li>Go to IIS Manager</li>
+      <li>In sites dropdown select the TLS checker website</li>
+      <li>Select Edit site&gt;Bindings</li>
+      <li>Select <code class="language-plaintext highlighter-rouge">https &gt; edit &gt;</code></li>
+      <li>Enter port 4000</li>
+      <li>Add hostname</li>
+      <li>You may have to open the port 4000 in inbound firewall rules</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+<ul>
+  <li><strong>Deploying using WAMP Server :</strong></li>
+</ul>
+
+<ol>
+  <li>This article is very apt but I might go into more details about this installation in coming weeks.
+<a href="https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed">https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed</a></li>
+</ol>
+
+<blockquote>
+  <p>Thank - You for reading !</p>
+  <blockquote>
+    <p>Avani</p>
+  </blockquote>
+</blockquote>
+
+
+  </div><a class="u-url" href="/tech_insights/2023/07/22/Ways-to-deploy-a-python-server-on-apache.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Avani Ausekar</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Avani Ausekar</li><li><a class="u-email" href="mailto:avaniausekar@gmail.com">avaniausekar@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/avaniausekar"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">avaniausekar</span></a></li><li><a href="https://www.linkedin.com/in/avaniausekar"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#linkedin"></use></svg> <span class="username">avaniausekar</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>A personal website and a blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
