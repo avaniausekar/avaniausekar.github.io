@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-08T14:17:02+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Null Pointer Tales</title><subtitle>Dive into a vibrant collection of the most intriguing tech projects, ideas, and experiments from the world of software development, hardware innovation, and beyond. This blog is a sandbox for the curious and creative — whether you’re a developer seeking inspiration, a tech enthusiast exploring trends, or just someone fascinated by the intersection of code and creativity. You are welcome here.</subtitle><author><name>Avani Ausekar</name></author><entry><title type="html">Deploy a Python Server with Flask on Windows Apache Server</title><link href="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/" rel="alternate" type="text/html" title="Deploy a Python Server with Flask on Windows Apache Server" /><published>2023-07-22T09:30:45+05:30</published><updated>2023-07-22T09:30:45+05:30</updated><id>http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache</id><content type="html" xml:base="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/">&lt;p&gt;Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
+I programmed this script in python using flask framework and now I wanted to deploy it to the server.
+But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.&lt;/p&gt;
+
+&lt;p&gt;So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)&lt;/p&gt;
+
+&lt;p&gt;Prerequisites:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Python - can be downloaded from &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Flask - can be installed by typing the following command in cmd 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install flask&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;WfastCGI module - installed by typing the following command in cmd &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pip install wfastcgi&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deploying using Windows IIS Server:&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;I have used this &lt;a href=&quot;https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3&quot;&gt;link&lt;/a&gt; to install until step IV with some changes.
+&lt;strong&gt;CGI&lt;/strong&gt; module will be found in 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Server Roles &amp;gt; Web Server(IIS) &amp;gt; Web Server &amp;gt; Application Development &amp;gt; CGI&lt;/code&gt;
+(If not found at the exact location as given in article)
+&lt;a href=&quot;https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3&quot;&gt;article link&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If after all steps – if you get &lt;em&gt;internal server&lt;/em&gt; error when you access the website url - you can refer these steps: reference &lt;a href=&quot;https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured&quot;&gt;Error an unknown FastCGI error occurred&lt;/a&gt;
+&lt;img src=&quot;/images/help.png&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;To deploy it on port 4000:&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Go to IIS Manager&lt;/li&gt;
+      &lt;li&gt;In sites dropdown select the TLS checker website&lt;/li&gt;
+      &lt;li&gt;Select Edit site&amp;gt;Bindings&lt;/li&gt;
+      &lt;li&gt;Select &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;https &amp;gt; edit &amp;gt;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;Enter port 4000&lt;/li&gt;
+      &lt;li&gt;Add hostname&lt;/li&gt;
+      &lt;li&gt;You may have to open the port 4000 in inbound firewall rules&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Deploying using WAMP Server :&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;This article is very apt but I might go into more details about this installation in coming weeks.
+&lt;a href=&quot;https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed&quot;&gt;https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Thank - You for reading !&lt;/p&gt;
+  &lt;blockquote&gt;
+    &lt;p&gt;Avani&lt;/p&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;</content><author><name>Avani Ausekar</name></author><category term="tech-insights" /><summary type="html">Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to. I programmed this script in python using flask framework and now I wanted to deploy it to the server. But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.</summary></entry><entry><title type="html">Debugging 101 - Love Your Bugs</title><link href="http://localhost:4000/tech-insights/debugging_guide/" rel="alternate" type="text/html" title="Debugging 101 - Love Your Bugs" /><published>2023-06-10T09:30:45+05:30</published><updated>2023-06-10T09:30:45+05:30</updated><id>http://localhost:4000/tech-insights/debugging_guide</id><content type="html" xml:base="http://localhost:4000/tech-insights/debugging_guide/">&lt;p&gt;Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Improve your developer productivity&lt;/li&gt;
+  &lt;li&gt;Write reliable code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this article I have tried to document all the debugging methods that I learnt while working on my projects.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/bugs.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Whenever you encounter a bug in any of your code/installation it is always helpful to remember the following things:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The error happens for a logical reason - its never magic&lt;/li&gt;
+  &lt;li&gt;Be confident that you can fix it&lt;/li&gt;
+  &lt;li&gt;Being stuck is temporary&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now that you have these 3 things in your toolkit let us proceed for some debugging steps so that you can feel your inherent superpower. :)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 1: Read error message carefully&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Error messages usually contain a lot of information about what went wrong. But they sometimes can be very large and overwhelming to read. You can  use these tricks to extract the necessary information from them:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Start fixing the first error message in case of multiple error messages. Fixing the first one often fixes the remaining errors&lt;/li&gt;
+  &lt;li&gt;Search if any solution is available on the internet for the error&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 2: Brainstorm possible reasons for the error&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now here I won’t be able to give exact reasons but some examples may include:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Is there something wrong with the server?&lt;/li&gt;
+  &lt;li&gt;Am I using correct package version?&lt;/li&gt;
+  &lt;li&gt;Have I followed all the instructions?(In case of errors in installations)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After finding possible reasons try to narrow it down to the most possible reason, also draw a diagram of the process if possible&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 3: Investigate&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Read the documentation (Important)&lt;/li&gt;
+  &lt;li&gt;Add lots of print statements&lt;/li&gt;
+  &lt;li&gt;Use a debugger&lt;/li&gt;
+  &lt;li&gt;Look at logs&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;A meme that highlights the importance of reading the docs:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/joke.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 4: Make complex things simple&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Fix one problem at a time&lt;/li&gt;
+  &lt;li&gt;Write clean code&lt;/li&gt;
+  &lt;li&gt;Reduce randomness&lt;/li&gt;
+  &lt;li&gt;Shorten your feedback/output loop (when you need to run the code many times)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 5: This also helps&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Take a break&lt;/li&gt;
+  &lt;li&gt;Ask a friend&lt;/li&gt;
+  &lt;li&gt;Explain the error/bug out loud&lt;/li&gt;
+  &lt;li&gt;Finding tools that make debugging easier - eg. debuggers, profilers, tracers, fuzzers, etc&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Step 6: After fixing the bug&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Celebrate - dance a little&lt;/li&gt;
+  &lt;li&gt;Tell somebody what you learnt - that way you won’t forget it&lt;/li&gt;
+  &lt;li&gt;Document your bug&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;Debugging can be an interesting adventure.&lt;/p&gt;
+
+&lt;p&gt;I would like to end this article by quoting Edsger Dijkstra:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;” Program testing can be used to show the presence of bugs, but never to show their absence! “&lt;/p&gt;
+&lt;/blockquote&gt;</content><author><name>Avani Ausekar</name></author><category term="tech-insights" /><summary type="html">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:</summary></entry><entry><title type="html">Creating Processes</title><link href="http://localhost:4000/operating%20systems/process-creation/" rel="alternate" type="text/html" title="Creating Processes" /><published>2023-04-25T09:30:45+05:30</published><updated>2023-04-25T09:30:45+05:30</updated><id>http://localhost:4000/operating%20systems/process-creation</id><content type="html" xml:base="http://localhost:4000/operating%20systems/process-creation/">&lt;p&gt;In this article I have tried to explain the important things that happen during a process creation. I always had doubts about&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;How a process is created in OS ?&lt;/li&gt;
+  &lt;li&gt;From where does it all start ?&lt;/li&gt;
+  &lt;li&gt;What happens when you start a process ?&lt;/li&gt;
+  &lt;li&gt;What exactly is fork and exec ?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let us see.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Process Heirarchy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Every process in Linux lives in a “process tree”. You can see that tree by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pstree&lt;/code&gt; in terminal. The root of the tree is init, with PID 1. Every process (except init) has a parent, and any process has many children.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Fork() System Call&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fork()&lt;/code&gt; system call is used to create a new process.The new process created by fork is called the child process.This function is called once but returns twice. The only difference in the returns is that the return value in the child is 0, whereas the return value in the parent is the process ID of the new child.The child - the process that is created is an (almost) exact copy of the calling process.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Exec() System Call&lt;/strong&gt; (Load into memory and then execute)&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Fork creates a new process which is a clone of itself, but what if we want to change the course of the process? Then we use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec()&lt;/code&gt; syscall. Exec() replaces the current process — its text, data, heap, and stack segments — with a brand-new program from disk.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;On Boot Up&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;On boot the kernel starts the init process, which then forks and execs the systems boot scripts. These fork and exec more programs, eventually ending up forking a login process.This is also known as process spawning which is carried out by these two systemcalls [fork &amp;amp; exec] in the background.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;Example code snippet of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fork()&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec()&lt;/code&gt; in a C program:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;now&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;am&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;split&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;two!&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;aaaaugh!&lt;/span&gt;
+&lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;who&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;am&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;could&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;either&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;am&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;take&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;over&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;will&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;be&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;totally&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;different&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;process&lt;/span&gt; 
+    &lt;span class=&quot;nb&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ls&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;omg&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;fork&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;failed&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;this&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;disaster&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:(&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ok&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;am&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;business&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;being&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cool&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;program&lt;/span&gt;
+    &lt;span class=&quot;sr&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;could&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;wait&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;the&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finish&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;I&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;want&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;Now, if I want to start a process called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; to list all the files in a directory.
+The process starts out like this:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;|-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;When I run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fork()&lt;/code&gt;, a child is created which is a clone of myself.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;|-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; 
+         &lt;span class=&quot;o&quot;&gt;|--&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;clone&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Then my clone calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec()&lt;/code&gt; that is, my child runs &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec(&quot;ls&quot;)&lt;/code&gt;. That leaves us with&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;|-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; 
+         &lt;span class=&quot;o&quot;&gt;|--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; exits I will be all alone by myself.(Almost)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;|-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; 
+         &lt;span class=&quot;o&quot;&gt;|--&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zombie&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;At this point &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; is actually a zombie process! That means it’s dead, but it’s waiting around for the parent in case the parent wants to check on its (child’s) return value (using the wait system call.) Once I get its return value, I will really be all alone again.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;my&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parent&lt;/span&gt;
+     &lt;span class=&quot;o&quot;&gt;|-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;me&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;The following paragraph from &lt;em&gt;Operating Systems:Three Easy Pieces&lt;/em&gt; sums up the gist of the article:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The fork() system call is strange; its partner in crime, exec(), is not
+so normal either. What it does: given the name of an executable (e.g., wc),
+and some arguments (e.g., p3.c), it loads code (and static data) from that
+executable and overwrites its current code segment (and current static
+data) with it; the heap and stack and other parts of the memory space of
+the program are re-initialized. Then the OS simply runs that program,
+passing in any arguments as the argv of that process. Thus, it does not
+create a new process; rather, it transforms the currently running program
+(formerly p3) into a different running program (wc). After the exec()
+in the child, it is almost as if p3.c never ran; a successful call to exec()
+never returns.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Got this awesome concept from &lt;em&gt;Julia Evans&lt;/em&gt; blog&lt;/p&gt;</content><author><name>Avani Ausekar</name></author><category term="operating systems" /><category term="os" /><summary type="html">In this article I have tried to explain the important things that happen during a process creation. I always had doubts about How a process is created in OS ? From where does it all start ? What happens when you start a process ? What exactly is fork and exec ?</summary></entry><entry><title type="html">Secret Life of A DNS Query</title><link href="http://localhost:4000/networking/secret-life-of-a-dns-query/" rel="alternate" type="text/html" title="Secret Life of A DNS Query" /><published>2023-04-22T09:30:45+05:30</published><updated>2023-04-22T09:30:45+05:30</updated><id>http://localhost:4000/networking/secret-life-of-a-dns-query</id><content type="html" xml:base="http://localhost:4000/networking/secret-life-of-a-dns-query/">&lt;p&gt;This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let’s see how it’s done.&lt;/p&gt;
+
+&lt;p&gt;Before you read further, these are the terms you need to get acquainted with:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;IP Address&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;An IP address is a unique address that identifies a device on the internet or a local network.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A query is a message sent by the client to the server.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cache&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Computing component that transparently stores data so that future requests for that data can be served faster.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DNS - the Internet’s Directory Service&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The browser needs to translate “www.blogger.com” to its corresponding IP address, because hostnames can consist of variable-length alphanumeric characters, they would be difficult to process by routers. For these reasons, hosts are also identified by so-called IP addresses.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;DNS Resolver&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Servers designed to receive DNS queries from web browsers and other applications.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Authoritative Name Servers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Servers where the DNS records are stored. Consists of root name servers, TLD servers and authoritative servers.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;Interaction of DNS Servers:&lt;/strong&gt;
+&lt;img src=&quot;/images/dns_query.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Consider you click on the URL www.blogger.com&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Browser first checks if IP address is present in its DNS cache, if not it calls the function present in the operating system to do DNS lookups. For E.g. on Linux that function is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getaddrinfo&lt;/code&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The OS might also have a DNS cache, if it has, then the function first checks if IP address is present in this cache. If IP is still not found, the function sends request to a server called DNS resolver&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The resolver checks if IP address is present in its cache, if not it contacts the root name server.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The root name server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the TLD server.”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The resolver then asks/queries the TLD server.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The TLD server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the Authoritative name server.”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The resolver then queries the authoritative name server.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The authoritative name server has the IP Address of the requested website in its database. It responds with the corresponding IP to the resolver.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The resolver/local DNS server then sends this IP to the OS.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;This IP is communicated to the browser and it starts opening a TCP connection to the server.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;As shown above, the DNS query is iterative in nature, as recursive queries put heavy load of name resolution in upper levels of hierarchy.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;James Kurose, Keith Ross, Computer Networking A Top-Down Approach, 7th Edition.&lt;/em&gt;&lt;/p&gt;</content><author><name>Avani Ausekar</name></author><category term="networking" /><category term="networking" /><summary type="html">This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let’s see how it’s done.</summary></entry></feed>

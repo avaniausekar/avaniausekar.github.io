@@ -1,0 +1,16 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "DSA"
+    url: /data-structures/
+  - title: "Networking"
+    url: /networking/
+  - title: "OS"
+    url: /operating-systems/
+  - title: "Full Stack "
+    url: /full-stack/
+  - title: "Tech Insights"
+    url: /tech-insights/
+  - title: "Comment Policy"
+    url: /comment-policy/
