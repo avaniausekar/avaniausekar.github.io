@@ -22,7 +22,7 @@ title_separator          : "-"
 subtitle                 : "A Tech Blog By Avani Ausekar" # site tagline that appears below site title in masthead
 name                     : "Avani Ausekar"
 description              : "Dive into a vibrant collection of the most intriguing tech projects, ideas, and experiments from the world of software development, hardware innovation, and beyond. This blog is a sandbox for the curious and creative — whether you’re a developer seeking inspiration, a tech enthusiast exploring trends, or just someone fascinated by the intersection of code and creativity. You are welcome here."
-url                      : "" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://avaniausekar.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : ""# the subpath of your site, e.g. "/blog"
 repository               : avaniausekar/avaniausekar.github.io
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
