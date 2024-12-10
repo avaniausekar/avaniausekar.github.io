@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-08T18:59:50+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Null Pointer Tales</title><subtitle>Dive into a vibrant collection of the most intriguing tech projects, ideas, and experiments from the world of software development, hardware innovation, and beyond. This blog is a sandbox for the curious and creative — whether you’re a developer seeking inspiration, a tech enthusiast exploring trends, or just someone fascinated by the intersection of code and creativity. You are welcome here.</subtitle><author><name>Avani Ausekar</name></author><entry><title type="html">Deploy a Python Server with Flask on Windows Apache Server</title><link href="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/" rel="alternate" type="text/html" title="Deploy a Python Server with Flask on Windows Apache Server" /><published>2023-07-22T09:30:45+05:30</published><updated>2023-07-22T09:30:45+05:30</updated><id>http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache</id><content type="html" xml:base="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/">&lt;p&gt;Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-12-10T11:41:48+05:30</updated><id>http://localhost:4000/feed.xml</id><title type="html">Null Pointer Tales</title><subtitle>Dive into a vibrant collection of the most intriguing tech projects, ideas, and experiments from the world of software development, hardware innovation, and beyond. This blog is a sandbox for the curious and creative — whether you’re a developer seeking inspiration, a tech enthusiast exploring trends, or just someone fascinated by the intersection of code and creativity. You are welcome here.</subtitle><author><name>Avani Ausekar</name></author><entry><title type="html">Deploy a Python Server with Flask on Windows Apache Server</title><link href="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/" rel="alternate" type="text/html" title="Deploy a Python Server with Flask on Windows Apache Server" /><published>2023-07-22T09:30:45+05:30</published><updated>2023-07-22T09:30:45+05:30</updated><id>http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache</id><content type="html" xml:base="http://localhost:4000/tech-insights/Ways-to-deploy-a-python-server-on-apache/">&lt;p&gt;Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
 I programmed this script in python using flask framework and now I wanted to deploy it to the server.
 But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.&lt;/p&gt;
 
 &lt;p&gt;So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)&lt;/p&gt;
 
-&lt;p&gt;Prerequisites:&lt;/p&gt;
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites:&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;Python - can be downloaded from &lt;a href=&quot;https://www.python.org/downloads/&quot;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Flask - can be installed by typing the following command in cmd 
@@ -14,9 +14,7 @@ But little did I know that deploying or setting up a python server with flask ca
 
 &lt;hr /&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Deploying using Windows IIS Server:&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h2 id=&quot;deploying-using-windows-iis-server&quot;&gt;&lt;strong&gt;Deploying using Windows IIS Server:&lt;/strong&gt;&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;
@@ -79,7 +77,7 @@ But little did I know that deploying or setting up a python server with flask ca
 
 &lt;p&gt;Now that you have these 3 things in your toolkit let us proceed for some debugging steps so that you can feel your inherent superpower. :)&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 1: Read error message carefully&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-1-read-error-message-carefully&quot;&gt;Step 1: Read error message carefully&lt;/h2&gt;
 
 &lt;p&gt;Error messages usually contain a lot of information about what went wrong. But they sometimes can be very large and overwhelming to read. You can  use these tricks to extract the necessary information from them:&lt;/p&gt;
 &lt;ol&gt;
@@ -87,7 +85,7 @@ But little did I know that deploying or setting up a python server with flask ca
   &lt;li&gt;Search if any solution is available on the internet for the error&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 2: Brainstorm possible reasons for the error&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-2-brainstorm-possible-reasons-for-the-error&quot;&gt;Step 2: Brainstorm possible reasons for the error&lt;/h2&gt;
 
 &lt;p&gt;Now here I won’t be able to give exact reasons but some examples may include:&lt;/p&gt;
 &lt;ol&gt;
@@ -98,7 +96,7 @@ But little did I know that deploying or setting up a python server with flask ca
 
 &lt;p&gt;After finding possible reasons try to narrow it down to the most possible reason, also draw a diagram of the process if possible&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 3: Investigate&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-3-investigate&quot;&gt;Step 3: Investigate&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Read the documentation (Important)&lt;/li&gt;
@@ -111,7 +109,7 @@ But little did I know that deploying or setting up a python server with flask ca
 
 &lt;p&gt;&lt;img src=&quot;/images/joke.png&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 4: Make complex things simple&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-4-make-complex-things-simple&quot;&gt;Step 4: Make complex things simple&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Fix one problem at a time&lt;/li&gt;
@@ -120,7 +118,7 @@ But little did I know that deploying or setting up a python server with flask ca
   &lt;li&gt;Shorten your feedback/output loop (when you need to run the code many times)&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 5: This also helps&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-5-this-also-helps&quot;&gt;Step 5: This also helps&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Take a break&lt;/li&gt;
@@ -129,7 +127,7 @@ But little did I know that deploying or setting up a python server with flask ca
   &lt;li&gt;Finding tools that make debugging easier - eg. debuggers, profilers, tracers, fuzzers, etc&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;Step 6: After fixing the bug&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;step-6-after-fixing-the-bug&quot;&gt;Step 6: After fixing the bug&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;Celebrate - dance a little&lt;/li&gt;
   &lt;li&gt;Tell somebody what you learnt - that way you won’t forget it&lt;/li&gt;
@@ -152,19 +150,20 @@ But little did I know that deploying or setting up a python server with flask ca
 
 &lt;p&gt;Let us see.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Process Heirarchy&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;process-heirarchy&quot;&gt;Process Heirarchy&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Every process in Linux lives in a “process tree”. You can see that tree by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pstree&lt;/code&gt; in terminal. The root of the tree is init, with PID 1. Every process (except init) has a parent, and any process has many children.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Fork() System Call&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;fork-system-call&quot;&gt;Fork() System Call&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fork()&lt;/code&gt; system call is used to create a new process.The new process created by fork is called the child process.This function is called once but returns twice. The only difference in the returns is that the return value in the child is 0, whereas the return value in the parent is the process ID of the new child.The child - the process that is created is an (almost) exact copy of the calling process.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Exec() System Call&lt;/strong&gt; (Load into memory and then execute)&lt;/p&gt;
+&lt;h3 id=&quot;exec-system-call&quot;&gt;Exec() System Call&lt;/h3&gt;
+&lt;p&gt;(Load into memory and then execute)&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Fork creates a new process which is a clone of itself, but what if we want to change the course of the process? Then we use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;exec()&lt;/code&gt; syscall. Exec() replaces the current process — its text, data, heap, and stack segments — with a brand-new program from disk.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;On Boot Up&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;on-boot-up&quot;&gt;On Boot Up&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;On boot the kernel starts the init process, which then forks and execs the systems boot scripts. These fork and exec more programs, eventually ending up forking a login process.This is also known as process spawning which is carried out by these two systemcalls [fork &amp;amp; exec] in the background.&lt;/em&gt;&lt;/p&gt;
 
@@ -238,43 +237,44 @@ never returns.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;references&quot;&gt;References:&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces&lt;/em&gt;&lt;/p&gt;
 
 &lt;p&gt;Got this awesome concept from &lt;em&gt;Julia Evans&lt;/em&gt; blog&lt;/p&gt;</content><author><name>Avani Ausekar</name></author><category term="operating systems" /><category term="os" /><summary type="html">In this article I have tried to explain the important things that happen during a process creation. I always had doubts about How a process is created in OS ? From where does it all start ? What happens when you start a process ? What exactly is fork and exec ?</summary></entry><entry><title type="html">Secret Life of A DNS Query</title><link href="http://localhost:4000/networking/secret-life-of-a-dns-query/" rel="alternate" type="text/html" title="Secret Life of A DNS Query" /><published>2023-04-22T09:30:45+05:30</published><updated>2023-04-22T09:30:45+05:30</updated><id>http://localhost:4000/networking/secret-life-of-a-dns-query</id><content type="html" xml:base="http://localhost:4000/networking/secret-life-of-a-dns-query/">&lt;p&gt;This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let’s see how it’s done.&lt;/p&gt;
 
 &lt;p&gt;Before you read further, these are the terms you need to get acquainted with:&lt;/p&gt;
+&lt;h2 id=&quot;important-terms&quot;&gt;Important Terms:&lt;/h2&gt;
 
-&lt;p&gt;&lt;strong&gt;IP Address&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;ip-address&quot;&gt;IP Address&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;An IP address is a unique address that identifies a device on the internet or a local network.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Query&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;query&quot;&gt;Query&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;A query is a message sent by the client to the server.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Cache&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;cache&quot;&gt;Cache&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Computing component that transparently stores data so that future requests for that data can be served faster.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;DNS - the Internet’s Directory Service&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;dns---the-internets-directory-service&quot;&gt;DNS - the Internet’s Directory Service&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;The browser needs to translate “www.blogger.com” to its corresponding IP address, because hostnames can consist of variable-length alphanumeric characters, they would be difficult to process by routers. For these reasons, hosts are also identified by so-called IP addresses.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;DNS Resolver&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;dns-resolver&quot;&gt;DNS Resolver&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Servers designed to receive DNS queries from web browsers and other applications.&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Authoritative Name Servers&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;authoritative-name-servers&quot;&gt;Authoritative Name Servers&lt;/h3&gt;
 
 &lt;p&gt;&lt;em&gt;Servers where the DNS records are stored. Consists of root name servers, TLD servers and authoritative servers.&lt;/em&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;Interaction of DNS Servers:&lt;/strong&gt;
-&lt;img src=&quot;/images/dns_query.jpg&quot; /&gt;&lt;/p&gt;
+&lt;h2 id=&quot;interaction-of-dns-servers&quot;&gt;Interaction of DNS Servers:&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/images/dns_query.jpg&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Consider you click on the URL www.blogger.com&lt;/p&gt;
 
@@ -314,6 +314,6 @@ never returns.&lt;/p&gt;
 &lt;p&gt;As shown above, the DNS query is iterative in nature, as recursive queries put heavy load of name resolution in upper levels of hierarchy.&lt;/p&gt;
 
 &lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;References:&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;references&quot;&gt;References:&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;James Kurose, Keith Ross, Computer Networking A Top-Down Approach, 7th Edition.&lt;/em&gt;&lt;/p&gt;</content><author><name>Avani Ausekar</name></author><category term="networking" /><category term="networking" /><summary type="html">This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let’s see how it’s done.</summary></entry></feed>

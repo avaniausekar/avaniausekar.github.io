@@ -385,39 +385,47 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#important-terms">Important Terms:</a><ul><li><a href="#ip-address">IP Address</a></li><li><a href="#query">Query</a></li><li><a href="#cache">Cache</a></li><li><a href="#dns---the-internets-directory-service">DNS - the Internet’s Directory Service</a></li><li><a href="#dns-resolver">DNS Resolver</a></li><li><a href="#authoritative-name-servers">Authoritative Name Servers</a></li></ul></li><li><a href="#interaction-of-dns-servers">Interaction of DNS Servers:</a></li><li><a href="#references">References:</a></li></ul>
+            </nav>
+          </aside>
+        
         <p>This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let’s see how it’s done.</p>
 
 <p>Before you read further, these are the terms you need to get acquainted with:</p>
+<h2 id="important-terms">Important Terms:</h2>
 
-<p><strong>IP Address</strong></p>
+<h3 id="ip-address">IP Address</h3>
 
 <p><em>An IP address is a unique address that identifies a device on the internet or a local network.</em></p>
 
-<p><strong>Query</strong></p>
+<h3 id="query">Query</h3>
 
 <p><em>A query is a message sent by the client to the server.</em></p>
 
-<p><strong>Cache</strong></p>
+<h3 id="cache">Cache</h3>
 
 <p><em>Computing component that transparently stores data so that future requests for that data can be served faster.</em></p>
 
-<p><strong>DNS - the Internet’s Directory Service</strong></p>
+<h3 id="dns---the-internets-directory-service">DNS - the Internet’s Directory Service</h3>
 
 <p><em>The browser needs to translate “www.blogger.com” to its corresponding IP address, because hostnames can consist of variable-length alphanumeric characters, they would be difficult to process by routers. For these reasons, hosts are also identified by so-called IP addresses.</em></p>
 
-<p><strong>DNS Resolver</strong></p>
+<h3 id="dns-resolver">DNS Resolver</h3>
 
 <p><em>Servers designed to receive DNS queries from web browsers and other applications.</em></p>
 
-<p><strong>Authoritative Name Servers</strong></p>
+<h3 id="authoritative-name-servers">Authoritative Name Servers</h3>
 
 <p><em>Servers where the DNS records are stored. Consists of root name servers, TLD servers and authoritative servers.</em></p>
 
 <hr />
 
 <hr />
-<p><strong>Interaction of DNS Servers:</strong>
-<img src="/images/dns_query.jpg" /></p>
+<h2 id="interaction-of-dns-servers">Interaction of DNS Servers:</h2>
+<p><img src="/images/dns_query.jpg" /></p>
 
 <p>Consider you click on the URL www.blogger.com</p>
 
@@ -457,7 +465,7 @@
 <p>As shown above, the DNS query is iterative in nature, as recursive queries put heavy load of name resolution in upper levels of hierarchy.</p>
 
 <hr />
-<p><strong>References:</strong></p>
+<h2 id="references">References:</h2>
 
 <p><em>James Kurose, Keith Ross, Computer Networking A Top-Down Approach, 7th Edition.</em></p>
 

@@ -210,7 +210,12 @@ kramdown:
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
 
-
+toc:
+  enabled: true
+  heading: "On This Page" # Customize the box heading
+  min_depth: 2           # Minimum heading level to include (e.g., H2)
+  max_depth: 3
+    
 # Sass/SCSS
 sass:
   sass_dir: _sass

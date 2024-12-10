@@ -5,39 +5,41 @@ date:   2023-04-22 09:30:45 +0530
 categories: 
         - networking
 tags: networking
+toc: true
 ---
 This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let's see how it's done.
 
 Before you read further, these are the terms you need to get acquainted with:
+## Important Terms: 
 
-**IP Address**
+### IP Address
 
 *An IP address is a unique address that identifies a device on the internet or a local network.*
 
-**Query**
+### Query
 
 *A query is a message sent by the client to the server.*
 
-**Cache**
+### Cache
 
 *Computing component that transparently stores data so that future requests for that data can be served faster.*
 
-**DNS - the Internet's Directory Service**
+### DNS - the Internet's Directory Service
 
 *The browser needs to translate "www.blogger.com" to its corresponding IP address, because hostnames can consist of variable-length alphanumeric characters, they would be difficult to process by routers. For these reasons, hosts are also identified by so-called IP addresses.*
 
-**DNS Resolver**
+### DNS Resolver
 
 *Servers designed to receive DNS queries from web browsers and other applications.*
 
-**Authoritative Name Servers**
+### Authoritative Name Servers
 
 *Servers where the DNS records are stored. Consists of root name servers, TLD servers and authoritative servers.*
 
 ----
 
 ****
-**Interaction of DNS Servers:**
+## Interaction of DNS Servers:
 <img src="{{ site.baseurl }}/images/dns_query.jpg">
 
 Consider you click on the URL www.blogger.com
@@ -67,6 +69,6 @@ Consider you click on the URL www.blogger.com
 As shown above, the DNS query is iterative in nature, as recursive queries put heavy load of name resolution in upper levels of hierarchy.
 
 ----
-**References:**
+## References:
 
 *James Kurose, Keith Ross, Computer Networking A Top-Down Approach, 7th Edition.*
