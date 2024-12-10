@@ -4,6 +4,7 @@ title:  "Deploy a Python Server with Flask on Windows Apache Server"
 date:   2023-07-22 09:30:45 +0530
 categories: 
         - tech-insights
+toc: true
 ---
 Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
 I programmed this script in python using flask framework and now I wanted to deploy it to the server.
@@ -12,7 +13,7 @@ But little did I know that deploying or setting up a python server with flask ca
 So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)
 
 
-Prerequisites:
+## Prerequisites:
 * Python - can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/)
 * Flask - can be installed by typing the following command in cmd 
 `pip install flask`
@@ -20,7 +21,7 @@ Prerequisites:
 
 ----
 
-- **Deploying using Windows IIS Server:**
+## **Deploying using Windows IIS Server:**
 
 1. I have used this [link](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3) to install until step IV with some changes.
 **CGI** module will be found in 

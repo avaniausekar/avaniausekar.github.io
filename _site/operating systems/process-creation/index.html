@@ -385,6 +385,13 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#process-heirarchy">Process Heirarchy</a></li><li><a href="#fork-system-call">Fork() System Call</a></li><li><a href="#exec-system-call">Exec() System Call</a></li><li><a href="#on-boot-up">On Boot Up</a></li><li><a href="#references">References:</a></li></ul>
+            </nav>
+          </aside>
+        
         <p>In this article I have tried to explain the important things that happen during a process creation. I always had doubts about</p>
 <ul>
   <li>How a process is created in OS ?</li>
@@ -395,19 +402,20 @@
 
 <p>Let us see.</p>
 
-<p><strong>Process Heirarchy</strong></p>
+<h3 id="process-heirarchy">Process Heirarchy</h3>
 
 <p><em>Every process in Linux lives in a “process tree”. You can see that tree by running <code class="language-plaintext highlighter-rouge">pstree</code> in terminal. The root of the tree is init, with PID 1. Every process (except init) has a parent, and any process has many children.</em></p>
 
-<p><strong>Fork() System Call</strong></p>
+<h3 id="fork-system-call">Fork() System Call</h3>
 
 <p><em>The <code class="language-plaintext highlighter-rouge">fork()</code> system call is used to create a new process.The new process created by fork is called the child process.This function is called once but returns twice. The only difference in the returns is that the return value in the child is 0, whereas the return value in the parent is the process ID of the new child.The child - the process that is created is an (almost) exact copy of the calling process.</em></p>
 
-<p><strong>Exec() System Call</strong> (Load into memory and then execute)</p>
+<h3 id="exec-system-call">Exec() System Call</h3>
+<p>(Load into memory and then execute)</p>
 
 <p><em>Fork creates a new process which is a clone of itself, but what if we want to change the course of the process? Then we use <code class="language-plaintext highlighter-rouge">exec()</code> syscall. Exec() replaces the current process — its text, data, heap, and stack segments — with a brand-new program from disk.</em></p>
 
-<p><strong>On Boot Up</strong></p>
+<h3 id="on-boot-up">On Boot Up</h3>
 
 <p><em>On boot the kernel starts the init process, which then forks and execs the systems boot scripts. These fork and exec more programs, eventually ending up forking a login process.This is also known as process spawning which is carried out by these two systemcalls [fork &amp; exec] in the background.</em></p>
 
@@ -481,7 +489,7 @@ never returns.</p>
 </blockquote>
 
 <hr />
-<p><strong>References:</strong></p>
+<h3 id="references">References:</h3>
 
 <p><em>Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces</em></p>
 

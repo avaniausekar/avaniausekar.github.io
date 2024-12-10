@@ -6,6 +6,7 @@ categories:
     - operating systems
 tags:
     - os
+toc: true
 ---
 In this article I have tried to explain the important things that happen during a process creation. I always had doubts about 
 - How a process is created in OS ?
@@ -15,19 +16,20 @@ In this article I have tried to explain the important things that happen during 
 
 Let us see.
 
-**Process Heirarchy**
+### Process Heirarchy
 
 *Every process in Linux lives in a “process tree”. You can see that tree by running `pstree` in terminal. The root of the tree is init, with PID 1. Every process (except init) has a parent, and any process has many children.*
 
-**Fork() System Call**
+### Fork() System Call
 
 *The `fork()` system call is used to create a new process.The new process created by fork is called the child process.This function is called once but returns twice. The only difference in the returns is that the return value in the child is 0, whereas the return value in the parent is the process ID of the new child.The child - the process that is created is an (almost) exact copy of the calling process.*
 
-**Exec() System Call** (Load into memory and then execute)
+### Exec() System Call 
+(Load into memory and then execute)
 
 *Fork creates a new process which is a clone of itself, but what if we want to change the course of the process? Then we use `exec()` syscall. Exec() replaces the current process — its text, data, heap, and stack segments — with a brand-new program from disk.*
 
-**On Boot Up**
+### On Boot Up
 
 *On boot the kernel starts the init process, which then forks and execs the systems boot scripts. These fork and exec more programs, eventually ending up forking a login process.This is also known as process spawning which is carried out by these two systemcalls [fork & exec] in the background.*
 
@@ -111,7 +113,7 @@ never returns.
 >
 
 ----
-**References:**
+### References:
 
 *Remzi H. Arpaci-Dusseau_ Andrea C Arpaci-Dusseau - Operating Systems- Three Easy Pieces*
 

@@ -385,13 +385,20 @@
 
       <section class="page__content" itemprop="text">
         
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#prerequisites">Prerequisites:</a></li><li><a href="#deploying-using-windows-iis-server">Deploying using Windows IIS Server:</a></li></ul>
+            </nav>
+          </aside>
+        
         <p>Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
 I programmed this script in python using flask framework and now I wanted to deploy it to the server.
 But little did I know that deploying or setting up a python server with flask can be tricky especially on a apache server.</p>
 
 <p>So, these are my learnings and some useful links - you can read them so that you can finish deploying a python server on Windows apache faster than me ! :)</p>
 
-<p>Prerequisites:</p>
+<h2 id="prerequisites">Prerequisites:</h2>
 <ul>
   <li>Python - can be downloaded from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
   <li>Flask - can be installed by typing the following command in cmd 
@@ -401,9 +408,7 @@ But little did I know that deploying or setting up a python server with flask ca
 
 <hr />
 
-<ul>
-  <li><strong>Deploying using Windows IIS Server:</strong></li>
-</ul>
+<h2 id="deploying-using-windows-iis-server"><strong>Deploying using Windows IIS Server:</strong></h2>
 
 <ol>
   <li>
