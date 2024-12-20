@@ -115,7 +115,7 @@ analytics:
 # Site Author
 author:
   name             : "Avani Ausekar"
-  avatar           : "/assets/images/avatar.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/avatar.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "I am a curious Information Technology student with a keen interest in fascinating tech concepts. My plan is to upload all the interesting things I discover here, including my projects, explanations of various concepts, and helpful installation guides. I’m also looking to collaborate on open-source projects, so feel free to connect with me!"
   location         : "Somewhere"
   email            :
