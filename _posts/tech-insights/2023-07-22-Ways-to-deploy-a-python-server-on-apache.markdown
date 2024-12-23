@@ -4,6 +4,9 @@ title:  "Deploy a Python Server with Flask on Windows Apache Server"
 date:   2023-07-22 09:30:45 +0530
 categories: 
         - tech-insights
+tags:
+        - installation
+        - flask
 toc: true
 ---
 Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.

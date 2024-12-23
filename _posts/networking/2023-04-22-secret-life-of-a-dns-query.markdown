@@ -4,7 +4,9 @@ title:  "Secret Life of A DNS Query"
 date:   2023-04-22 09:30:45 +0530
 categories: 
         - networking
-tags: networking
+tags: 
+        - networks
+        - DNS
 toc: true
 ---
 This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let's see how it's done.

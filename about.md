@@ -3,7 +3,7 @@ layout: single
 title: "About"
 permalink: /about/
 ---
-> Intelligence is the ability to avoid doing work, yet getting the work done.
+> A personal collection of insights and lessons I have gained throughout my academic journey.
 
 
 Hello ! I am *Avani*, a curious ~~Information Technology~~ student with a keen interest in fascinating tech concepts. My plan is to upload all the interesting things I discover here, including my projects, explanations of various concepts, and helpful installation guides. I’m also looking to collaborate on open-source projects, so feel free to connect with me!

@@ -328,6 +328,7 @@ defaults:
       comments: true
       share: true
       related: true
+      tags_label: true
    # Default for category pages
   - scope:
       path: ""

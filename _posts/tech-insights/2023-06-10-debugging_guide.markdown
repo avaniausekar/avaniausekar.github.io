@@ -4,6 +4,9 @@ title:  "Debugging 101 - Love Your Bugs"
 date:   2023-06-10 09:30:45 +0530
 categories: 
         - tech-insights
+tags:
+        - bugs
+        - debugging
 toc: true
 ---
 Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:

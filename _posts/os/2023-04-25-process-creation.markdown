@@ -6,6 +6,8 @@ categories:
     - operating systems
 tags:
     - os
+    - fork
+    - process creation
 toc: true
 ---
 In this article I have tried to explain the important things that happen during a process creation. I always had doubts about 
