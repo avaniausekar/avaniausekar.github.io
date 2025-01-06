@@ -29,18 +29,6 @@ var store = [{
         "url": "/networking/the-tcp-ip-and-security/",
         "teaser": null
       },{
-        "title": "Easiest Implementation of the Travelling Salesman Problem",
-        "excerpt":"def checkbound(st,des,cost,t):     n = len(cost[0])     pencost = t     #copy cost in reduced matrix     reduced = [row[:] for row in cost]     #assign infinity     for j in range(n):         reduced[st][j] = float('inf')     for i in range(n):         reduced[i][des] = float('inf')      reduced[des][0] = float('inf')     #addition of subtracted row,col --&gt;(rs ,cs)     reduced,row = rowReduction(reduced)     reduced,col = colReduction(reduced)      pencost = pencost + row + col + cost[st][des]     return reduced,pencost   def rowMinVal(cost,i):     n = len(cost[0])     minVal = cost[i][0]     for  j in range(n):         if cost[i][j] &lt; minVal:             minVal = cost[i][j]      return minVal  def colMinVal(cost,i):     n = len(cost[0])     minVal = cost[0][i]     for j in range(n):         if cost[j][i] &lt; minVal:             minVal = cost[j][i]     return minVal  def rowReduction(cost):     row = 0     n = len(cost[0])     for i in range(n):         rmin = rowMinVal(cost,i)         #print(rmin , i)         if rmin != float('inf'):             row += rmin         for j in range(n):             if cost[i][j] != float('inf'):                 cost[i][j] -= rmin     return cost,row  def colReduction(cost):     col = 0     n = len(cost[0])     for j in range(n):         cmin = colMinVal(cost,j)         if cmin != float('inf'):             col += cmin         for i in range(n):             if cost[i][j] != float('inf'):                 cost[i][j] -= cmin     return cost,col  def all_visited(select):     return all(select)      def main():     matrix = [             [float('inf'),4,2],             [3,float('inf'),4],             [1,8,float('inf')]     ]     matrix,row = rowReduction(matrix)     #print(matrix)     matrix,col = colReduction(matrix)     t = row + col     print(\"Starting cost \",t)     print(\"First reduced matrix rcm\")     for m in matrix:         print(m)      k = 0     n = len(matrix[0])     select = [0] *n     path = []     path.append(k)      nextmatrix = matrix     while not all_visited(select):         matrix = nextmatrix         #matries to store matrices         #val list to take the least cost of each pathe then take corres matrices         matrices = [0] * n         val_list = [0] * n         val_list[0] = float('inf')         print(\"K value \",k)          for i in range(1,n):             #route not explored             if select[i] == 0:                 tempmatrix,tempcost = checkbound(k,i,matrix,t)                 matrices[i] = tempmatrix                 val_list[i] = tempcost             else:                 # we do not want to consider the 0 in finding min                 val_list[i] = float('inf')          min_val = min(val_list)         k = val_list.index(min_val)         nextmatrix = matrices[k]         t = min_val         select[k] = 1         path.append(k)         print(\"min val \",min_val)         print(\"Next matrix\",nextmatrix)      print(\"Final path \",path)      main()   ","categories": ["not live yet"],
-        "tags": ["data structures","tsp","python"],
-        "url": "/not%20live%20yet/tsp/",
-        "teaser": null
-      },{
-        "title": "Node Production Headache: Security Headers",
-        "excerpt":" ","categories": ["not live yet"],
-        "tags": ["node js","security headers","web app","production"],
-        "url": "/not%20live%20yet/node-and-security-headers/",
-        "teaser": null
-      },{
         "title": "Node Js and Rect Js Web App: An Overview",
         "excerpt":"During my summer internship, I was tasked with building a full-stack web application to meet the company’s needs. The technology was completely new to me, so it took quite a bit of time to understand how the different components—Node.js for the backend, React for the frontend, and a database—fit together. In this blog, I will explain the general structure of a Node-React full-stack application wrt programming perspective.      ℹ️ Note:  This is a beginner’s guide, and the structure outlined here will be used in the development environment.  To deploy the application to production, several changes need to be made, including modifications to the backend .env file and converting the React frontend to static JavaScript files. I plan to cover more details on this in my upcoming blogs.     Components of a Full Stack Web App     Frontend Development            It is the visible part of a website responsible for user experience.       Responsible for user interaction.       Calls the backend api.           Backend Development            It involves the server-side development of websites, focusing primarily on their functionality.       Responsible for managing the database through queries and APIs based on client-side commands.           Database            An organized collection of related data that enables efficient retrieval, insertion, and deletion of information.               As shown in the picture, this illustrates the flow of a query from the frontend to the backend and to the database, then back.   Points to Note     It is considered best practice to separate the client-side frontend code from the server-side backend code by organizing them into distinct folders.   If you are using a Node-React technology stack, it’s important to note that the backend routes and frontend routes are different.   During the development of your web application, you will need to run the React development server on a specific port, such as 3000, while the Node server should be started on a different port, like 5000. This setup allows the front end to send requests to the appropriate REST API (back-end route) to perform functions or fetch data. (PS: in the PROD environment, the frontend and the backend are bundled up to use a single port)   If you are using MySQL or a similar relational database, the Node.js server will typically query the data on the default port 3306. However, if you wish to change this default port, you can specify the new port in the environment variables. (More details on this will be covered in a future blog post.)   The ports really confused me in the beginning, but once the WHY and HOW of things is clear, everything becomes a piece of cake. This was a brief overview of the structure of a full stack application. I plan to write more blogs about this particular setup, so stay tuned! 😊  ","categories": ["full-stack"],
         "tags": ["node js","react","web app"],
@@ -104,29 +92,14 @@ var store = [{
     "title": "tcp/ip",
     "excerpt":"","url": "http://localhost:4000/tags/tcp-ip/"
   },{
-    "title": "data structures",
-    "excerpt":"","url": "http://localhost:4000/tags/data-structures/"
-  },{
-    "title": "tsp",
-    "excerpt":"","url": "http://localhost:4000/tags/tsp/"
-  },{
-    "title": "python",
-    "excerpt":"","url": "http://localhost:4000/tags/python/"
-  },{
     "title": "node js",
     "excerpt":"","url": "http://localhost:4000/tags/node-js/"
   },{
-    "title": "security headers",
-    "excerpt":"","url": "http://localhost:4000/tags/security-headers/"
+    "title": "react",
+    "excerpt":"","url": "http://localhost:4000/tags/react/"
   },{
     "title": "web app",
     "excerpt":"","url": "http://localhost:4000/tags/web-app/"
-  },{
-    "title": "production",
-    "excerpt":"","url": "http://localhost:4000/tags/production/"
-  },{
-    "title": "react",
-    "excerpt":"","url": "http://localhost:4000/tags/react/"
   },{
     "title": "networking",
     "excerpt":"","url": "http://localhost:4000/categories/networking/"
@@ -136,9 +109,6 @@ var store = [{
   },{
     "title": "tech-insights",
     "excerpt":"","url": "http://localhost:4000/categories/tech-insights/"
-  },{
-    "title": "not live yet",
-    "excerpt":"","url": "http://localhost:4000/categories/not-live-yet/"
   },{
     "title": "full-stack",
     "excerpt":"","url": "http://localhost:4000/categories/full-stack/"
