@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Node Js and Rect Js Web App: An Overview"
+title:  "Node Js and React Js Web App: An Overview"
 date:   2025-01-04 09:30:45 +0530
 categories: 
         - full-stack
