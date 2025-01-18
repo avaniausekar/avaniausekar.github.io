@@ -17,29 +17,31 @@ So, these are my learnings and some useful links - you can read them so that you
 
 
 ## Prerequisites:
-* Python - can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/)
+* Python - can be downloaded from [<span style="color: blue;"> https://www.python.org/downloads/</span>](https://www.python.org/downloads/)
 * Flask - can be installed by typing the following command in cmd 
-`pip install flask`
-* WfastCGI module - installed by typing the following command in cmd `pip install wfastcgi`
-
+```
+$ pip install flask
+```
+* WfastCGI module - installed by typing the following command in cmd
+```
+$ pip install wfastcgi
+```
 ----
 
 ## **Deploying using Windows IIS Server:**
 
-1. I have used this [link](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3) to install until step IV with some changes.
+1. I have used this [<span style="color: blue;">link</span>](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3) to install until step IV (As given in the article) with some changes.
 **CGI** module will be found in 
-`Server Roles > Web Server(IIS) > Web Server > Application Development > CGI`
-(If not found at the exact location as given in article)
-[article link](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3)
+*`Server Roles > Web Server(IIS) > Web Server > Application Development > CGI`* \
+(If it is not found at the exact location as given in the above article)
 
-2. If after all steps – if you get *internal server* error when you access the website url - you can refer these steps: reference [Error an unknown FastCGI error occurred](https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured)
-
+2. After completing all steps – if you get *internal server* error when you access the website url - you can refer these steps: reference [<span style="color: blue;"> Error an unknown FastCGI error occurred</span>](https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured) \
 <img src="{{ site.baseurl }}/images/help.png"> 
 
-3. To deploy it on port 4000:
+3. To deploy it on port eg say :4000:
 - Go to IIS Manager
 - In sites dropdown select the TLS checker website
-- Select Edit site>Bindings
+- Select `edit site > Bindings`
 - Select `https > edit >`
 - Enter port 4000
 - Add hostname

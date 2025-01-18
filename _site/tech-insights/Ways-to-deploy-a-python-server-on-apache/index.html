@@ -249,7 +249,7 @@
       
         
           
-            <li><a href="mailto:avaniausekar@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+            <li><a href="mailto:avaniausekar.work@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
           
         
           
@@ -403,37 +403,37 @@ But little did I know that deploying or setting up a python server with flask ca
 
 <h2 id="prerequisites">Prerequisites:</h2>
 <ul>
-  <li>Python - can be downloaded from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a></li>
-  <li>Flask - can be installed by typing the following command in cmd 
-<code class="language-plaintext highlighter-rouge">pip install flask</code></li>
-  <li>WfastCGI module - installed by typing the following command in cmd <code class="language-plaintext highlighter-rouge">pip install wfastcgi</code></li>
+  <li>Python - can be downloaded from <a href="https://www.python.org/downloads/"><span style="color: blue;"> https://www.python.org/downloads/</span></a></li>
+  <li>Flask - can be installed by typing the following command in cmd
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pip install flask
+</code></pre></div>    </div>
+  </li>
+  <li>WfastCGI module - installed by typing the following command in cmd
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ pip install wfastcgi
+</code></pre></div>    </div>
+    <hr />
+  </li>
 </ul>
-
-<hr />
 
 <h2 id="deploying-using-windows-iis-server"><strong>Deploying using Windows IIS Server:</strong></h2>
 
 <ol>
   <li>
-    <p>I have used this <a href="https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3">link</a> to install until step IV with some changes.
+    <p>I have used this <a href="https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3"><span style="color: blue;">link</span></a> to install until step IV (As given in the article) with some changes.
 <strong>CGI</strong> module will be found in 
-<code class="language-plaintext highlighter-rouge">Server Roles &gt; Web Server(IIS) &gt; Web Server &gt; Application Development &gt; CGI</code>
-(If not found at the exact location as given in article)
-<a href="https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3">article link</a></p>
+<em><code class="language-plaintext highlighter-rouge">Server Roles &gt; Web Server(IIS) &gt; Web Server &gt; Application Development &gt; CGI</code></em> <br />
+(If it is not found at the exact location as given in the above article)</p>
   </li>
   <li>
-    <p>If after all steps – if you get <em>internal server</em> error when you access the website url - you can refer these steps: reference <a href="https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured">Error an unknown FastCGI error occurred</a></p>
+    <p>After completing all steps – if you get <em>internal server</em> error when you access the website url - you can refer these steps: reference <a href="https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured"><span style="color: blue;"> Error an unknown FastCGI error occurred</span></a> <br />
+<img src="/images/help.png" /></p>
   </li>
-</ol>
-
-<p><img src="/images/help.png" /></p>
-
-<ol>
-  <li>To deploy it on port 4000:
+  <li>
+    <p>To deploy it on port eg say :4000:</p>
     <ul>
       <li>Go to IIS Manager</li>
       <li>In sites dropdown select the TLS checker website</li>
-      <li>Select Edit site&gt;Bindings</li>
+      <li>Select <code class="language-plaintext highlighter-rouge">edit site &gt; Bindings</code></li>
       <li>Select <code class="language-plaintext highlighter-rouge">https &gt; edit &gt;</code></li>
       <li>Enter port 4000</li>
       <li>Add hostname</li>
@@ -520,6 +520,58 @@ But little did I know that deploying or setting up a python server with flask ca
   
   <h2 class="page__related-title">You may also enjoy</h2>
   <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/teaser.jpg" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/full-stack/node-and-security-headers/" rel="permalink">Node Production Headache: Security Headers
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-01-18T09:30:45+05:30">January 18, 2025</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Introduction
+</p>
+  </article>
+</div>
+
     
       
       
@@ -671,59 +723,6 @@ But little did I know that deploying or setting up a python server with flask ca
 
     <p class="archive__item-excerpt" itemprop="description">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:
 </p>
-  </article>
-</div>
-
-    
-      
-      
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-      <div class="archive__item-teaser">
-        <img src="/assets/images/teaser.jpg" alt="">
-      </div>
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/operating%20systems/process-creation/" rel="permalink">Creating Processes
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-      
-      <span class="page__meta-date">
-        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
-        
-        <time datetime="2023-04-25T09:30:45+05:30">April 25, 2023</time>
-      </span>
-    
-
-    <span class="page__meta-sep"></span>
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
-        
-          3 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">In this article I have tried to explain the important things that happen during a process creation. I always had doubts about
-
-  How a process is created in ...</p>
   </article>
 </div>
 

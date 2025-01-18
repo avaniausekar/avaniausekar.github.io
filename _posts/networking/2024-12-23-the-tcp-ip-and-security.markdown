@@ -24,7 +24,7 @@ The security measures implemented at different layers of the stack can offer var
 <img src="{{ site.baseurl }}/images/network-models.png">
 
 ## Security at the Application Layer
-The application layer connects applications to the underlying network for message transmission. Host-to-host communication occurs at the application layer, so security has to be implemented in end hosts. Applications should design their security mechanisms when their specific needs cannot be met by the lower layers. One example of this is non-repudiation. The lower layers struggle to provide non-repudiation services because they do not have access to the data. Some examples of the security mechanisms implemented at the applicaion layer include [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), [Kerberos](https://web.mit.edu/kerberos/), and Secure Shell.
+The application layer connects applications to the underlying network for message transmission. Host-to-host communication occurs at the application layer, so security has to be implemented in end hosts. Applications should design their security mechanisms when their specific needs cannot be met by the lower layers. One example of this is non-repudiation. The lower layers struggle to provide non-repudiation services because they do not have access to the data. Some examples of the security mechanisms implemented at the applicaion layer include [<span style="color: blue;"> PGP</span>](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), [<span style="color: blue;">Kerberos</span>](https://web.mit.edu/kerberos/), and Secure Shell.
 ### Benefits
 - Executing in the context of the user enables easy access to user credentials such as private keys.
 - Ensures complete access to the data the user aims to protect, making it easier to offer services like non-repudiation. 
@@ -69,5 +69,5 @@ The Data Link layer is responsible for communications between end-device network
 
 ## References
 1. Doraswamy, N. and Harkins, D. (1999) IPSec: The New Security Standard for the internet, intranets, and Virtual Private Networks. Upper Saddle River, NJ: Prentice Hall. 
-2. [What is TLS](https://www.spiceworks.com/it-security/vulnerability-management/articles/what-is-ssl-tls/)
+2. [<span style="color: blue;"> What is TLS </span>](https://www.spiceworks.com/it-security/vulnerability-management/articles/what-is-ssl-tls/)
 

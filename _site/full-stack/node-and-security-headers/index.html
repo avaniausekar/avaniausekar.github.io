@@ -1,0 +1,1064 @@
+<!doctype html>
+
+
+<html lang="en-US" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+<!-- Optional: Add other formats for modern browsers -->
+<link rel="icon" type="image/png" href="/assets/images/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+<link rel="manifest" href="/assets/images/site.webmanifest" />
+<!-- begin _includes/seo.html --><title>Node Production Headache: Security Headers - Null Pointer Tales</title>
+<meta name="description" content="Introduction">
+
+
+  <meta name="author" content="Avani Ausekar">
+  
+  <meta property="article:author" content="Avani Ausekar">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Null Pointer Tales">
+<meta property="og:title" content="Node Production Headache: Security Headers">
+<meta property="og:url" content="http://localhost:4000/full-stack/node-and-security-headers/">
+
+
+  <meta property="og:description" content="Introduction">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2025-01-18T09:30:45+05:30">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://localhost:4000/full-stack/node-and-security-headers/">
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="google7497e540fd5955de" />
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Null Pointer Tales Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  window.enable_copy_code_button = true;
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    <nav class="skip-links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.png" alt="Null Pointer Tales"></a>
+        
+        <a class="site-title" href="/">
+          Null Pointer Tales
+          <span class="site-subtitle">A Tech Blog By Avani Ausekar</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/data-structures/"
+                
+                
+              >DSA</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/networking/"
+                
+                
+              >Networking</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/operating-systems/"
+                
+                
+              >OS</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/full-stack/"
+                
+                
+              >Full Stack </a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tech-insights/"
+                
+                
+              >Tech Insights</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/comment-policy/"
+                
+                
+              >Comment Policy</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <i class="fas fa-search"></i>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+           
+
+
+
+<nav class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    
+    
+    
+      
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/" itemprop="item"><span itemprop="name">Home</span></a>
+
+          <meta itemprop="position" content="1" />
+        </li>
+        <span class="sep">/</span>
+      
+      
+        
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          <a href="/full-stack" itemprop="item"><span itemprop="name">Full stack</span></a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <span class="sep">/</span>
+      
+    
+      
+      
+        <li class="current">Node Production Headache: Security Headers</li>
+      
+    
+  </ol>
+</nav>
+  
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/assets/images/avatar.jpg" alt="Avani Ausekar" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">Avani Ausekar</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>Hello, this is my tech journal. I am looking forward to collaborate on open-source projects, so feel free to connect with me!</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:avaniausekar.work@gmail.com" rel="nofollow noopener noreferrer me"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/avaniausekar" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+          
+            <li><a href="https://www.linkedin.com/in/avaniausekar" rel="nofollow noopener noreferrer me" itemprop="sameAs"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span class="label">Linkedin</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article
+    class="page"
+    itemscope
+    itemtype="https://schema.org/CreativeWork"
+    
+  >
+    <meta
+      itemprop="headline"
+      content="Node Production Headache: Security Headers"
+    /> <meta
+      itemprop="description"
+      content="Introduction"
+    /> <meta
+      itemprop="datePublished"
+      content="2025-01-18T09:30:45+05:30"
+    /> 
+
+    <div class="page__inner-wrap">
+      
+      <header>
+        <h1 id="page-title" class="page__title" itemprop="headline">
+          <a href="http://localhost:4000/full-stack/node-and-security-headers/" itemprop="url"
+            ><p>Node Production Headache: Security Headers</p>
+</a
+          >
+        </h1> 
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-01-18T09:30:45+05:30">January 18, 2025</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+      </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <aside class="sidebar__right ">
+          <nav class="toc">
+            <header>
+              <h4 class="nav__title">
+                <i class="fas fa-file-alt"></i>
+                On this page
+              </h4>
+            </header>
+            <ul class="toc__menu"><li><a href="#introduction">Introduction</a></li><li><a href="#common-security-headers">Common Security Headers</a></li><li><a href="#how-to-set-security-headers">How to Set Security Headers</a></li><li><a href="#security-headers-and-production-environment">Security Headers and Production Environment</a></li></ul>
+          </nav>
+        </aside>
+         <h2 id="introduction">Introduction</h2>
+
+<p>Hearing the term “<em>security headers</em>” might be intimidating for someone new to computer science, especially in the field of web development. Security headers are HTTP response headers that provide essential security measures that your application can use to enhance its overall security. These headers play a critical role in ensuring the safety of a website.</p>
+
+<p>The following table outlines some of the most important security headers.</p>
+
+<h2 id="common-security-headers">Common Security Headers</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Security Header</th>
+      <th>Expected Value</th>
+      <th>Use</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content-Security-Policy</td>
+      <td>default-src ‘self’;</td>
+      <td>Restricts sources for content to mitigate cross-site scripting (XSS) and data injection.</td>
+    </tr>
+    <tr>
+      <td>Cross-Origin-Opener-Policy</td>
+      <td>same-origin</td>
+      <td>Isolates browsing contexts to prevent cross-origin information leaks.</td>
+    </tr>
+    <tr>
+      <td>Cross-Origin-Resource-Policy</td>
+      <td>same-origin</td>
+      <td>Limits the sharing of resources to the same origin.</td>
+    </tr>
+    <tr>
+      <td>Origin-Agent-Cluster</td>
+      <td>?1</td>
+      <td>Changes process isolation to be origin-based for improved security.</td>
+    </tr>
+    <tr>
+      <td>Referrer-Policy</td>
+      <td>no-referrer or strict-origin</td>
+      <td>Controls how much referrer information is included with requests.</td>
+    </tr>
+    <tr>
+      <td>Strict-Transport-Security</td>
+      <td>max-age=31536000; includeSubDomains</td>
+      <td>Enforces HTTPS for all connections and prevents downgrade attacks.</td>
+    </tr>
+    <tr>
+      <td>X-Content-Type-Options</td>
+      <td>nosniff</td>
+      <td>Prevents the browser from MIME-sniffing a response away from the declared content-type.</td>
+    </tr>
+    <tr>
+      <td>X-DNS-Prefetch-Control</td>
+      <td>on or off</td>
+      <td>Controls DNS prefetching to reduce potential information leaks.</td>
+    </tr>
+    <tr>
+      <td>X-Download-Options</td>
+      <td>noopen</td>
+      <td>Forces downloads to be saved instead of auto-executed (Internet Explorer only).</td>
+    </tr>
+    <tr>
+      <td>X-Frame-Options</td>
+      <td>DENY or SAMEORIGIN</td>
+      <td>Prevents the webpage from being framed to protect against clickjacking attacks.</td>
+    </tr>
+    <tr>
+      <td>X-Permitted-Cross-Domain-Policies</td>
+      <td>none or master-only</td>
+      <td>Controls cross-domain behavior for Adobe products, like Acrobat.</td>
+    </tr>
+    <tr>
+      <td>X-Powered-By</td>
+      <td>(Header removed entirely)</td>
+      <td>Prevents revealing server information to mitigate potential attacks.</td>
+    </tr>
+    <tr>
+      <td>X-XSS-Protection</td>
+      <td>0</td>
+      <td>Disables buggy XSS filters in older browsers to avoid unintended issues.</td>
+    </tr>
+    <tr>
+      <td>Permissions-Policy</td>
+      <td>geolocation=(), microphone=()</td>
+      <td>Restricts access to browser features like geolocation and microphone.</td>
+    </tr>
+    <tr>
+      <td>Expect-CT</td>
+      <td>enforce, max-age=86400</td>
+      <td>Ensures that valid Certificate Transparency information is included for HTTPS.</td>
+    </tr>
+    <tr>
+      <td>Cross-Origin-Embedder-Policy</td>
+      <td>require-corp</td>
+      <td>Mitigates cross-origin attacks for resources embedded in the page.</td>
+    </tr>
+    <tr>
+      <td>Cache-Control</td>
+      <td>no-store, no-cache, must-revalidate</td>
+      <td>Prevents sensitive information from being stored in the cache.</td>
+    </tr>
+    <tr>
+      <td>Set-Cookie</td>
+      <td>Secure; HttpOnly; SameSite=Strict</td>
+      <td>Protects cookies by making them secure, accessible only to HTTP, and tied to the same site.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>When building a web application, the developer must set these response headers in the code.</p>
+
+<h2 id="how-to-set-security-headers">How to Set Security Headers</h2>
+
+<p>Let’s consider an example in Node.js. We can set security headers either manually or by using a popular library called ‘<em>helmet</em>’, which acts as middleware to automatically set these headers for you. Using a library like helmet is convenient, so we’ll focus on its implementation. First, we will look at how to use helmet in your code, and then we will discuss the importance of carefully setting security headers when deploying to production.</p>
+
+<ul>
+  <li>Install Helmet using this command</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install helmet
+</code></pre></div></div>
+
+<ul>
+  <li>Call the helmet middleware in your application’s main file for e.g <em>index.js</em> or <em>app.js</em></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">helmet</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">helmet</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nf">helmet</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>You can learn more about the default headers set by the Helmet.js by reading <a href="https://www.npmjs.com/package/helmet"><span style="color: blue;">here</span></a>.</p>
+
+<ul>
+  <li>If you want to customize the default headers set by Helmet, you can do so. <em><strong>It is essential to customize the headers</strong> because relying solely on the default headers provided by Helmet in a production environment can hinder the functionality of your application.</em> Why is this the case ? Let’s discuss it in the next section.</li>
+</ul>
+
+<h2 id="security-headers-and-production-environment">Security Headers and Production Environment</h2>
+
+<p>After coding my Node.js application, I was ready to deploy it in production. I initially thought that the deployment process would go faster since I had already simulated it on my virtual machine, but I was mistaken. If you noticed, I mentioned “headache” in the title of this blog for a reason.</p>
+
+<p>When I simulated the production environment on my virtual machine - it was set up on localhost, also the microsoft login was not set during that time.</p>
+
+<p>When I deployed the application in production on my domain - the following issues were encountered over a span of one week</p>
+
+<ol>
+  <li>I encountered an issue where the Microsoft login popup was not appearing. After changing the popup setting to redirect, it directed me to the Microsoft Login page. However, after entering the correct login credentials, I ended up with a blank page.
+    <ul>
+      <li>This happened because the Content Security Policy (CSP) was not configured to allow requests from the Microsoft website. The login popup was not appearing because the frameAncestors and frameSrc in the CSP was not configured for <ins><em>“https://login.microsoftonline.com”</em></ins></li>
+      <li>To resolve this, I updated the <mark>connectSrc</mark>, <mark>frameSrc</mark>, <mark>frameAncestors</mark> in the CSP to include not only the “self” variable but also all the domains from which we expected to receive requests.
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
+<span class="nf">helmet</span><span class="p">({</span>
+ <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
+ <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+   <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+   <span class="na">connectSrc</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://graph.microsoft.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://somethirdpartydomain.com</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="na">frameSrc</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span> <span class="c1">// for tokens</span>
+   <span class="na">frameAncestors</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span> <span class="c1">// Allows embedding in Azure AD frames/popups</span>
+ <span class="p">},</span>
+ <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>After the above three changes, I was able to login, but still faced problems. Half of my stylesheet, scripts and images were not present and the pop ups were not showing small elements like a cross svg etc.
+    <ul>
+      <li>To resolve that, I updated the <mark>scriptSrc</mark>, <mark>imgSrc</mark> and <mark>styleSrc</mark> in the CSP directives. <br />
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
+<span class="nf">helmet</span><span class="p">({</span>
+ <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
+ <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+   <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+   <span class="na">connectSrc</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://graph.microsoft.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://somethirdpartydomain.com</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="na">frameSrc</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span> <span class="c1">// for tokens</span>
+   <span class="na">frameAncestors</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span> <span class="c1">// Allows embedding in Azure AD frames/popups</span>
+   <span class="na">scriptSrc</span><span class="p">:</span> <span class="p">[</span>
+     <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+     <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="na">imgSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">],</span>
+   <span class="na">styleSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-inline'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">],</span> <span class="c1">// Allows inline styles</span>
+ <span class="p">},</span>
+ <span class="p">},</span>
+<span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>The following is some of the security header configuration I used to deploy my application to production. Additionally, we need to implement CORS (Cross-Origin Resource Sharing), which is not included in Helmet. CORS can be quite tricky, so I will save that topic for another post. Thank you for reading until the end!</p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">helmet</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">helmet</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
+  <span class="nf">helmet</span><span class="p">({</span>
+    <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
+        <span class="na">connectSrc</span><span class="p">:</span> <span class="p">[</span>
+          <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://graph.microsoft.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://somethirdpartydomain.com</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="na">frameSrc</span><span class="p">:</span> <span class="p">[</span>
+          <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">],</span> <span class="c1">// for tokens</span>
+        <span class="na">frameAncestors</span><span class="p">:</span> <span class="p">[</span>
+          <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">],</span> <span class="c1">// Allows embedding in Azure AD frames/popups</span>
+        <span class="na">scriptSrc</span><span class="p">:</span> <span class="p">[</span>
+          <span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://login.microsoftonline.com</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="na">imgSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">blob:</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">data:</span><span class="dl">"</span><span class="p">],</span>
+        <span class="na">styleSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">'unsafe-inline'</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">https://mydomain.com</span><span class="dl">"</span><span class="p">],</span> <span class="c1">// Allows inline styles</span>
+      <span class="p">},</span>
+    <span class="p">},</span>
+    <span class="na">crossOriginOpenerPolicy</span><span class="p">:</span> <span class="p">{</span> <span class="na">policy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">same-origin</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="na">crossOriginResourcePolicy</span><span class="p">:</span> <span class="p">{</span> <span class="na">policy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">same-origin</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="na">originAgentCluster</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">referrerPolicy</span><span class="p">:</span> <span class="p">{</span> <span class="na">policy</span><span class="p">:</span> <span class="dl">"</span><span class="s2">no-referrer</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="na">hsts</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">maxAge</span><span class="p">:</span> <span class="mi">31536000</span><span class="p">,</span> <span class="c1">//  HSTS policy remains in effect for one year</span>
+      <span class="na">includeSubDomains</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+      <span class="na">preload</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">noSniff</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">dnsPrefetchControl</span><span class="p">:</span> <span class="p">{</span> <span class="na">allow</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+    <span class="na">frameguard</span><span class="p">:</span> <span class="p">{</span> <span class="na">action</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sameorigin</span><span class="dl">"</span> <span class="p">},</span>
+    <span class="na">permittedCrossDomainPolicies</span><span class="p">:</span> <span class="p">{</span> <span class="na">permittedPolicies</span><span class="p">:</span> <span class="dl">"</span><span class="s2">none</span><span class="dl">"</span> <span class="p">},</span>
+  <span class="p">})</span>
+<span class="p">);</span>
+</code></pre></div></div>
+ 
+      </section>
+
+      <footer class="page__meta">
+         
+
+ 
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time class="dt-published" datetime="2025-01-18T09:30:45+05:30">January 18, 2025</time></p>
+ 
+        <div class="post-tags">
+          <span class="post-tags__label">
+            &nbsp<i class="fas fa-tag"></i>&nbsp<strong>Tags:</strong>
+          </span>
+          
+          <a
+            class="post-tag"
+            href="/tags/node-js/"
+            >node js</a
+          >
+          
+          <a
+            class="post-tag"
+            href="/tags/security-headers/"
+            >security headers</a
+          >
+          
+          <a
+            class="post-tag"
+            href="/tags/web-app/"
+            >web app</a
+          >
+          
+          <a
+            class="post-tag"
+            href="/tags/helmet/"
+            >helmet</a
+          >
+          
+          <a
+            class="post-tag"
+            href="/tags/production/"
+            >production</a
+          >
+          
+        </div>
+        
+      </footer>
+
+      <section class="page__share">
+  <h4 class="page__share-title">Share on</h4>
+
+  <a href="https://twitter.com/intent/tweet?text=Node+Production+Headache%3A+Security+Headers%20http%3A%2F%2Flocalhost%3A4000%2Ffull-stack%2Fnode-and-security-headers%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2Ffull-stack%2Fnode-and-security-headers%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/full-stack/node-and-security-headers/" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+ 
+  <nav class="pagination">
+    
+      <a href="/full-stack/a-node-js-web-app-an-overview/" class="pagination--pager" title="Node Js and React Js Web App: An Overview">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+
+    </div>
+
+    
+  </article>
+
+    
+<div class="page__related">
+  
+  <h2 class="page__related-title">You may also enjoy</h2>
+  <div class="grid__wrapper">
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/teaser.jpg" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/full-stack/a-node-js-web-app-an-overview/" rel="permalink">Node Js and React Js Web App: An Overview
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2025-01-04T09:30:45+05:30">January 4, 2025</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">During my summer internship, I was tasked with building a full-stack web application to meet the company’s needs. The technology was completely new to me, so...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/teaser.jpg" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/networking/the-tcp-ip-and-security/" rel="permalink">The TCP/IP Model and Security
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2024-12-23T10:30:45+05:30">December 23, 2024</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">The TCP/IP (Transmission Control Protocol/Internet Protocol) reference model defines how information moves from sender to receiver. TCP/IP was not originally...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/teaser.jpg" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/tech-insights/Ways-to-deploy-a-python-server-on-apache/" rel="permalink">Deploy a Python Server with Flask on Windows Apache Server
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-07-22T09:30:45+05:30">July 22, 2023</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website ...</p>
+  </article>
+</div>
+
+    
+      
+      
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+      <div class="archive__item-teaser">
+        <img src="/assets/images/teaser.jpg" alt="">
+      </div>
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/tech-insights/debugging_guide/" rel="permalink">Debugging 101 - Love Your Bugs
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+      
+      <span class="page__meta-date">
+        <i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i>
+        
+        <time datetime="2023-06-10T09:30:45+05:30">June 10, 2023</time>
+      </span>
+    
+
+    <span class="page__meta-sep"></span>
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-fw fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:
+</p>
+  </article>
+</div>
+
+    
+  </div>
+</div>
+  
+</div>
+
+      
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';" role="search">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <div>
+    Avani Ausekar
+  </div>
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/avaniausekar" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://www.linkedin.com/in/avaniausekar" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> Linkedin</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2025 <a href="http://localhost:4000">Null Pointer Tales</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://localhost:4000/full-stack/node-and-security-headers/";  /* Replace PAGE_URL with your page's canonical URL variable */
+      this.page.identifier = "/full-stack/node-and-security-headers"; /* Replace PAGE_IDENTIFIER with your page's unique identifier variable */
+    };
+    (function() { /* DON'T EDIT BELOW THIS LINE */
+      var d = document, s = d.createElement('script');
+      s.src = 'https://null-pointer-tales.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+  </body>
+</html>
