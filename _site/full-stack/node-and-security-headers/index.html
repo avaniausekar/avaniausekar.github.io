@@ -89,6 +89,28 @@
 
 <!-- end custom head snippets -->
 
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Node Production Headache: Security Headers | Null Pointer Tales</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Node Production Headache: Security Headers" />
+<meta name="author" content="Avani Ausekar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction" />
+<meta property="og:description" content="Introduction" />
+<link rel="canonical" href="http://localhost:4000/full-stack/node-and-security-headers/" />
+<meta property="og:url" content="http://localhost:4000/full-stack/node-and-security-headers/" />
+<meta property="og:site_name" content="Null Pointer Tales" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2025-01-18T09:30:45+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Node Production Headache: Security Headers" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Avani Ausekar" />
+<meta name="google-site-verification" content="google7497e540fd5955de" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Avani Ausekar"},"dateModified":"2025-01-18T09:30:45+05:30","datePublished":"2025-01-18T09:30:45+05:30","description":"Introduction","headline":"Node Production Headache: Security Headers","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/full-stack/node-and-security-headers/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Avani Ausekar"},"url":"http://localhost:4000/full-stack/node-and-security-headers/"}</script>
+<!-- End Jekyll SEO tag -->
+
   </head>
 
   <body class="layout--single" dir="ltr">
@@ -524,9 +546,9 @@
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">helmet</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">helmet</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="nf">helmet</span><span class="p">());</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">helmet</span><span class="p">());</span>
 </code></pre></div></div>
 
 <p>You can learn more about the default headers set by the Helmet.js by reading <a href="https://www.npmjs.com/package/helmet"><span style="color: blue;">here</span></a>.</p>
@@ -548,8 +570,8 @@
     <ul>
       <li>This happened because the Content Security Policy (CSP) was not configured to allow requests from the Microsoft website. The login popup was not appearing because the frameAncestors and frameSrc in the CSP was not configured for <ins><em>“https://login.microsoftonline.com”</em></ins></li>
       <li>To resolve this, I updated the <mark>connectSrc</mark>, <mark>frameSrc</mark>, <mark>frameAncestors</mark> in the CSP to include not only the “self” variable but also all the domains from which we expected to receive requests.
-        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
-<span class="nf">helmet</span><span class="p">({</span>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="nx">helmet</span><span class="p">({</span>
  <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
  <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
    <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
@@ -582,8 +604,8 @@
   <li>After the above three changes, I was able to login, but still faced problems. Half of my stylesheet, scripts and images were not present and the pop ups were not showing small elements like a cross svg etc.
     <ul>
       <li>To resolve that, I updated the <mark>scriptSrc</mark>, <mark>imgSrc</mark> and <mark>styleSrc</mark> in the CSP directives. <br />
-        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
-<span class="nf">helmet</span><span class="p">({</span>
+        <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+<span class="nx">helmet</span><span class="p">({</span>
  <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
  <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
    <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
@@ -625,10 +647,10 @@
 <p>The following is some of the security header configuration I used to deploy my application to production. Additionally, we need to implement CORS (Cross-Origin Resource Sharing), which is not included in Helmet. CORS can be quite tricky, so I will save that topic for another post. Thank you for reading until the end!</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">helmet</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">helmet</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nf">express</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span>
-  <span class="nf">helmet</span><span class="p">({</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span>
+  <span class="nx">helmet</span><span class="p">({</span>
     <span class="na">contentSecurityPolicy</span><span class="p">:</span> <span class="p">{</span>
       <span class="na">directives</span><span class="p">:</span> <span class="p">{</span>
         <span class="na">defaultSrc</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">'self'</span><span class="dl">"</span><span class="p">],</span>
@@ -955,6 +977,7 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:
+
 </p>
   </article>
 </div>

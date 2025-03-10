@@ -89,6 +89,28 @@
 
 <!-- end custom head snippets -->
 
+    <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Creating Processes | Null Pointer Tales</title>
+<meta name="generator" content="Jekyll v3.9.2" />
+<meta property="og:title" content="Creating Processes" />
+<meta name="author" content="Avani Ausekar" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="In this article I have tried to explain the important things that happen during a process creation. I always had doubts about How a process is created in OS ? From where does it all start ? What happens when you start a process ? What exactly is fork and exec ?" />
+<meta property="og:description" content="In this article I have tried to explain the important things that happen during a process creation. I always had doubts about How a process is created in OS ? From where does it all start ? What happens when you start a process ? What exactly is fork and exec ?" />
+<link rel="canonical" href="http://localhost:4000/operating%20systems/process-creation/" />
+<meta property="og:url" content="http://localhost:4000/operating%20systems/process-creation/" />
+<meta property="og:site_name" content="Null Pointer Tales" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-04-25T09:30:45+05:30" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Creating Processes" />
+<meta name="twitter:site" content="@" />
+<meta name="twitter:creator" content="@Avani Ausekar" />
+<meta name="google-site-verification" content="google7497e540fd5955de" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Avani Ausekar"},"dateModified":"2023-04-25T09:30:45+05:30","datePublished":"2023-04-25T09:30:45+05:30","description":"In this article I have tried to explain the important things that happen during a process creation. I always had doubts about How a process is created in OS ? From where does it all start ? What happens when you start a process ? What exactly is fork and exec ?","headline":"Creating Processes","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/operating%20systems/process-creation/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"Avani Ausekar"},"url":"http://localhost:4000/operating%20systems/process-creation/"}</script>
+<!-- End Jekyll SEO tag -->
+
   </head>
 
   <body class="layout--single" dir="ltr">
@@ -428,10 +450,10 @@
 
 <figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">int</span> <span class="n">pid</span> <span class="o">=</span> <span class="nb">fork</span><span class="p">();</span>
 <span class="sr">//</span> <span class="n">now</span> <span class="no">I</span> <span class="n">am</span> <span class="nb">split</span> <span class="k">in</span> <span class="n">two!</span> <span class="n">aaaaugh!</span>
-<span class="sr">//</span> <span class="n">who</span> <span class="n">am</span> <span class="no">I</span><span class="p">?</span> <span class="no">I</span> <span class="n">could</span> <span class="n">be</span> <span class="n">either</span> <span class="n">the</span> <span class="n">child</span> <span class="ow">or</span> <span class="n">the</span> <span class="n">parent</span>
+<span class="sr">//</span> <span class="n">who</span> <span class="n">am</span> <span class="no">I</span><span class="p">?</span> <span class="no">I</span> <span class="n">could</span> <span class="n">be</span> <span class="n">either</span> <span class="n">the</span> <span class="n">child</span> <span class="n">or</span> <span class="n">the</span> <span class="n">parent</span>
 <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
     <span class="sr">//</span> <span class="n">ok</span> <span class="no">I</span> <span class="n">am</span> <span class="n">the</span> <span class="n">child</span> <span class="n">process</span>
-    <span class="sr">//</span> <span class="n">ls</span> <span class="n">will</span> <span class="n">take</span> <span class="n">over</span> <span class="ow">and</span> <span class="no">I</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">totally</span> <span class="n">different</span> <span class="n">process</span> 
+    <span class="sr">//</span> <span class="n">ls</span> <span class="n">will</span> <span class="n">take</span> <span class="n">over</span> <span class="n">and</span> <span class="no">I</span> <span class="n">will</span> <span class="n">be</span> <span class="n">a</span> <span class="n">totally</span> <span class="n">different</span> <span class="n">process</span> 
     <span class="nb">exec</span><span class="p">([</span><span class="s2">"ls"</span><span class="p">])</span>
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">pid</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
     <span class="sr">//</span> <span class="n">omg</span> <span class="nb">fork</span> <span class="n">failed</span> <span class="o">--</span> <span class="n">this</span> <span class="n">is</span> <span class="n">a</span> <span class="n">disaster</span> <span class="p">:(</span>
@@ -612,6 +634,7 @@ never returns.</p>
 
 
     <p class="archive__item-excerpt" itemprop="description">Introduction
+
 </p>
   </article>
 </div>
