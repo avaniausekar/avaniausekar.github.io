@@ -19,7 +19,7 @@ locale                   : "en-US"
 rtl                      : # true, false (default) # turns direction of the page into right to left for RTL languages
 title                    : "Null Pointer Tales"
 title_separator          : "-"
-subtitle                 : "A Tech Blog By Avani Ausekar" # site tagline that appears below site title in masthead
+subtitle                 : "A Tech Blog & Stuff By Avani Ausekar" # site tagline that appears below site title in masthead
 name                     : "Avani Ausekar"
 description              : "Dive into a vibrant collection of the most intriguing tech projects, ideas, and experiments from the world of software development, hardware innovation, and beyond. This blog is a sandbox for the curious and creative — whether you’re a developer seeking inspiration, a tech enthusiast exploring trends, or just someone fascinated by the intersection of code and creativity. You are welcome here."
 url                      : "https://avaniausekar.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"

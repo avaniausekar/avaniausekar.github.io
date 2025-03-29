@@ -11,6 +11,7 @@ tags:
   - helmet
   - production
 toc: true
+classes: wide
 ---
 
 ## Introduction
