@@ -1,6 +1,6 @@
 ---
 layout: category
-title: Networking
+title: Networks
 permalink: /networking/
 taxonomy: networking
 ---

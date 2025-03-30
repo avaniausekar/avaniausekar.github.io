@@ -4,7 +4,7 @@ main:
     url: /about/
   - title: "DSA"
     url: /data-structures/
-  - title: "Networking"
+  - title: "Networks"
     url: /networking/
   - title: "OS"
     url: /operating-systems/
@@ -12,5 +12,7 @@ main:
     url: /full-stack/
   - title: "Tech Views"
     url: /tech-views/
+  - title: "Misc"
+    url: /miscellaneous/
   - title: "Comment Policy"
     url: /comment-policy/
