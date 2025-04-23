@@ -12,6 +12,8 @@ tags:
   - production
 toc: true
 classes: wide
+header:
+  teaser: /images/security-headers.png
 ---
 
 ## Introduction
