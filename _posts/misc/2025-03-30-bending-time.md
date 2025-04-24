@@ -8,6 +8,8 @@ tags:
         - time
         - minute
 toc: true
+header:
+  teaser: /images/clock.jpg
 ---
 What is a minute, really? Google would say it is 60 seconds. But do we perceive those 60 seconds the same way each time?  Check out these activities that can help you either slow down or speed up your perception of a minute. Feel free to share any other interesting examples you might have!
 

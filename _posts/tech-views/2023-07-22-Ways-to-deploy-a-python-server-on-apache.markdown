@@ -8,6 +8,8 @@ tags:
         - installation
         - flask
 toc: true
+header:
+  teaser: /images/apache_flask.png
 ---
 Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
 I programmed this script in python using flask framework and now I wanted to deploy it to the server.

@@ -9,6 +9,8 @@ tags:
         - react
         - web app
 toc: true
+header:
+  teaser: /images/webapp.jpg
 ---
 During my summer internship, I was tasked with building a full-stack web application to meet the company’s needs. The technology was completely new to me, so it took quite a bit of time to understand how the different components—Node.js for the backend, React for the frontend, and a database—fit together. In this blog, I will explain the general structure of a Node-React full-stack application wrt programming perspective.
 
