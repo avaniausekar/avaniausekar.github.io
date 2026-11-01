@@ -1,0 +1,15 @@
+{%- comment -%}
+  Override of Chirpy v7.6.0 `_includes/favicons.html`.
+  Points at the icon set in assets/img/favicons: favicon.svg, favicon.ico, favicon-32x32.png,
+  apple-touch-icon.png and android-chrome-192x192/512x512.png (used by site.webmanifest).
+{%- endcomment -%}
+
+{% capture favicon_path %}{{ '/assets/img/favicons' | relative_url }}{% endcapture %}
+
+<link rel="icon" href="{{ favicon_path }}/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/svg+xml" href="{{ favicon_path }}/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ favicon_path }}/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ favicon_path }}/apple-touch-icon.png">
+{% if site.pwa.enabled %}
+  <link rel="manifest" href="{{ favicon_path }}/site.webmanifest">
+{% endif %}
