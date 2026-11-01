@@ -1,0 +1,24 @@
+#  Sharing options at the bottom of the post.
+#  Icons from <https://fontawesome.com/>
+#  A "copy link" button is always added by the theme.
+
+platforms:
+  - type: Linkedin
+    icon: "fab fa-linkedin"
+    link: "https://www.linkedin.com/feed/?shareActive=true&shareUrl=URL"
+
+  - type: Twitter
+    icon: "fa-brands fa-square-x-twitter"
+    link: "https://twitter.com/intent/tweet?text=TITLE&url=URL"
+
+  - type: Reddit
+    icon: "fa-brands fa-square-reddit"
+    link: "https://www.reddit.com/submit?url=URL&title=TITLE"
+
+  - type: Hacker News
+    icon: "fa-brands fa-hacker-news"
+    link: "https://news.ycombinator.com/submitlink?u=URL&t=TITLE"
+
+  - type: WhatsApp
+    icon: "fa-brands fa-whatsapp"
+    link: "https://api.whatsapp.com/send?text=TITLE%20URL"

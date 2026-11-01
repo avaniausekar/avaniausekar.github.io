@@ -1,13 +1,10 @@
 ---
-layout: single
 title:  "Debugging 101 - Love Your Bugs"
 date:   2023-06-10 09:30:45 +0530
-categories: 
-        - tech-views
-tags:
-        - bugs
-        - debugging
-toc: true
+categories: [Tech Views]
+tags: [bugs, debugging]
+# Keeps the URL from the old site
+permalink: /tech-views/debugging_guide/
 ---
 Errors and bugs are a necessary evil in any software developement field, and learning the art of debugging is a very vital step if you want to:
 
@@ -17,7 +14,7 @@ Errors and bugs are a necessary evil in any software developement field, and lea
 In this article I have tried to document all the debugging methods that I learnt while working on my projects.
 
 
-<img src="{{ site.baseurl }}/images/bugs.png">
+![Illustration of software bugs](/images/bugs.png)
 
 
 Whenever you encounter a bug in any of your code/installation it is always helpful to remember the following things:
@@ -48,11 +45,11 @@ After finding possible reasons try to narrow it down to the most possible reason
 1. Read the documentation (Important)
 2. Add lots of print statements
 3. Use a debugger
-4. Look at logs 
+4. Look at logs
 
 A meme that highlights the importance of reading the docs:
 
-<img src="{{ site.baseurl }}/images/joke.png">
+![Meme about the importance of reading the documentation](/images/joke.png)
 
 ## Step 4: Make complex things simple
 
@@ -71,7 +68,7 @@ A meme that highlights the importance of reading the docs:
 ## Step 6: After fixing the bug
 1. Celebrate - dance a little
 2. Tell somebody what you learnt - that way you won't forget it
-3. Document your bug 
+3. Document your bug
 
 ----
 Debugging can be an interesting adventure.

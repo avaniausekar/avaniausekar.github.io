@@ -1,18 +1,16 @@
 ---
-layout: single
 title:  "Secret Life of A DNS Query"
 date:   2023-04-22 09:30:45 +0530
-categories: 
-        - networking
-tags: 
-        - networks
-        - DNS
-toc: true
+categories: [Networking]
+tags: [networks, dns]
+# Keeps the URL from the old site
+permalink: /networking/secret-life-of-a-dns-query/
 ---
 This article describes how a DNS query gets resolved. Though a website is loaded in just one-click on our devices, a lot of work goes on at the back end to render that webpage. Let's see how it's done.
 
 Before you read further, these are the terms you need to get acquainted with:
-## Important Terms: 
+
+## Important Terms:
 
 ### IP Address
 
@@ -40,9 +38,9 @@ Before you read further, these are the terms you need to get acquainted with:
 
 ----
 
-****
 ## Interaction of DNS Servers:
-<img src="{{ site.baseurl }}/images/dns_query.jpg">
+
+![How a DNS query travels between the resolver, root, TLD and authoritative name servers](/images/dns_query.jpg)
 
 Consider you click on the URL www.blogger.com
 
@@ -52,11 +50,11 @@ Consider you click on the URL www.blogger.com
 
 3.     The resolver checks if IP address is present in its cache, if not it contacts the root name server.
 
-4.     The root name server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the TLD server.” 
+4.     The root name server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the TLD server.”
 
 5.     The resolver then asks/queries the TLD server.
 
-6.     The TLD server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the Authoritative name server.” 
+6.     The TLD server checks if IP is present in its cache, if yes, it sends the corresponding IP address, if not it replies with “I don’t know this name but ask the Authoritative name server.”
 
 7.     The resolver then queries the authoritative name server.
 

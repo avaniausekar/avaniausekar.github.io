@@ -1,0 +1,8 @@
+{%- comment -%}
+  Builds `pf_projects`: every published project, featured ones first, then newest first.
+  Shared by the portfolio grid and the previous/next links on project pages.
+{%- endcomment -%}
+{%- assign pf_sorted = site.projects | sort: 'date' | reverse -%}
+{%- assign pf_featured = pf_sorted | where: 'featured', 'true' -%}
+{%- assign pf_others = pf_sorted | where_exp: 'p', 'p.featured != true' -%}
+{%- assign pf_projects = pf_featured | concat: pf_others -%}

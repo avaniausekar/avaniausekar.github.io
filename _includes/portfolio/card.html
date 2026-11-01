@@ -1,0 +1,98 @@
+{%- comment -%}
+  One project card in the portfolio grid.
+  Usage: {% include portfolio/card.html project=p %}
+{%- endcomment -%}
+
+{%- assign p = include.project -%}
+{%- assign cover = p.image.path | default: p.image -%}
+{%- assign cover_alt = p.image.alt | default: p.title -%}
+
+{%- comment -%} Placeholder art is orange unless the project sets its own `hue` (0–360) {%- endcomment -%}
+{%- assign art_style = '' -%}
+{%- if p.hue -%}
+  {%- assign hue2 = p.hue | plus: 20 | modulo: 360 -%}
+  {%- capture art_style -%}style="--pf-c1: hsl({{ p.hue }} 80% 56%); --pf-c2: hsl({{ hue2 }} 75% 42%);"{%- endcapture -%}
+{%- endif -%}
+
+{%- capture search_text -%}
+  {{ p.title }} {{ p.description }} {{ p.category }} {{ p.status }} {{ p.tech | join: ' ' }}
+{%- endcapture -%}
+
+<article
+  class="pf-card{% if p.featured %} pf-card--featured{% endif %}"
+  data-category="{{ p.category | slugify }}"
+  data-search="{{ search_text | strip_newlines | downcase | escape }}"
+>
+  <div class="pf-card__media">
+    {% if cover %}
+      <img src="{{ cover | relative_url }}" alt="{{ cover_alt | escape }}" loading="lazy" decoding="async">
+    {% else %}
+      <div class="pf-art" {{ art_style }} aria-hidden="true">
+        <i class="{{ p.icon | default: 'fas fa-code' }}"></i>
+      </div>
+    {% endif %}
+
+    {% if p.featured %}
+      <span class="pf-badge"><i class="fas fa-star" aria-hidden="true"></i> Featured</span>
+    {% endif %}
+  </div>
+
+  <div class="pf-card__body">
+    <p class="pf-card__meta">
+      {% if p.category %}<span>{{ p.category }}</span>{% endif %}
+      <span>{{ p.date | date: '%Y' }}</span>
+      {% if p.status %}
+        <span class="pf-status pf-status--{{ p.status | slugify }}">{{ p.status }}</span>
+      {% endif %}
+    </p>
+
+    <h3 class="pf-card__title">
+      <a class="pf-card__link" href="{{ p.url | relative_url }}">{{ p.title }}</a>
+    </h3>
+
+    {% if p.description %}
+      <p class="pf-card__summary">{{ p.description }}</p>
+    {% endif %}
+
+    {% if p.tech.size > 0 %}
+      <ul class="pf-tech" aria-label="Technologies">
+        {% for t in p.tech limit: 5 %}
+          <li>{{ t }}</li>
+        {% endfor %}
+        {% if p.tech.size > 5 %}
+          <li class="pf-tech__more">+{{ p.tech.size | minus: 5 }}</li>
+        {% endif %}
+      </ul>
+    {% endif %}
+
+    <div class="pf-card__footer">
+      <span class="pf-card__cta" aria-hidden="true">
+        View project <i class="fas fa-arrow-right"></i>
+      </span>
+      <span class="pf-card__links">
+        {% if p.links.github %}
+          <a
+            href="{{ p.links.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Source code"
+            aria-label="Source code for {{ p.title | escape }}"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+        {% if p.links.demo %}
+          <a
+            href="{{ p.links.demo }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Live demo"
+            aria-label="Live demo of {{ p.title | escape }}"
+          >
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+          </a>
+        {% endif %}
+      </span>
+    </div>
+  </div>
+</article>

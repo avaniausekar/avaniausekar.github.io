@@ -1,0 +1,5 @@
+# Extra UI strings. Jekyll deep-merges this file with the theme's own `en.yml`,
+# so only new or changed keys need to be listed here.
+
+tabs:
+  portfolio: Portfolio

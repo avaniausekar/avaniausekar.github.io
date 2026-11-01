@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+{%- comment -%}
+  Override of Chirpy v7.6.0 `_layouts/page.html`.
+  Only change: documents in the `projects` collection use the case-study template
+  (`_includes/portfolio/project.html`). Going through this layout keeps Chirpy's
+  image lightbox, lazy loading and code-copy buttons working on project pages.
+{%- endcomment -%}
+
+{% include lang.html %}
+
+{% if page.collection == 'projects' %}
+  {% include portfolio/project.html %}
+{% else %}
+  <article class="px-1">
+    {% if page.layout == 'page' or page.collection == 'tabs' %}
+      {% assign tab_key = page.title | downcase %}
+      {% assign title = site.data.locales[lang].tabs[tab_key] | default: page.title %}
+      <h1 class="dynamic-title">
+        {{ title }}
+      </h1>
+      <div class="content">
+        {{ content }}
+      </div>
+    {% else %}
+      {{ content }}
+    {% endif %}
+  </article>
+{% endif %}

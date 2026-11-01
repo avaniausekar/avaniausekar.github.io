@@ -1,19 +1,10 @@
 ---
-layout: single
 title: "Node Production Headache: Security Headers"
 date: 2025-01-18 09:30:45 +0530
-categories:
-  - full-stack
-tags:
-  - node js
-  - security headers
-  - web app
-  - helmet
-  - production
-toc: true
-classes: wide
-header:
-  teaser: /images/security-headers.png
+categories: [Full Stack]
+tags: [node js, security headers, web app, helmet, production]
+# Keeps the URL from the old site
+permalink: /full-stack/node-and-security-headers/
 ---
 
 ## Introduction
@@ -53,7 +44,7 @@ Let's consider an example in Node.js. We can set security headers either manuall
 
 - Install Helmet using this command
 
-```
+```console
 $ npm install helmet
 ```
 
@@ -67,7 +58,7 @@ const app = express();
 app.use(helmet());
 ```
 
-You can learn more about the default headers set by the Helmet.js by reading [<span style="color: blue;">here</span>](https://www.npmjs.com/package/helmet).
+You can learn more about the default headers set by the Helmet.js by reading [here](https://www.npmjs.com/package/helmet).
 
 - If you want to customize the default headers set by Helmet, you can do so. _**It is essential to customize the headers** because relying solely on the default headers provided by Helmet in a production environment can hinder the functionality of your application._ Why is this the case ? Let's discuss it in the next section.
 
@@ -82,6 +73,7 @@ When I deployed the application in production on my domain - the following issue
 1. I encountered an issue where the Microsoft login popup was not appearing. After changing the popup setting to redirect, it directed me to the Microsoft Login page. However, after entering the correct login credentials, I ended up with a blank page.
 - This happened because the Content Security Policy (CSP) was not configured to allow requests from the Microsoft website. The login popup was not appearing because the frameAncestors and frameSrc in the CSP was not configured for <ins>_"https://login.microsoftonline.com"_</ins>
 - To resolve this, I updated the <mark>connectSrc</mark>, <mark>frameSrc</mark>, <mark>frameAncestors</mark> in the CSP to include not only the "self" variable but also all the domains from which we expected to receive requests.
+
 ```js
 app.use(
   helmet({
@@ -113,7 +105,8 @@ app.use(
 ```
 
 2. After the above three changes, I was able to login, but still faced problems. Half of my stylesheet, scripts and images were not present and the pop ups were not showing small elements like a cross svg etc.
-- To resolve that, I updated the <mark>scriptSrc</mark>, <mark>imgSrc</mark> and <mark>styleSrc</mark> in the CSP directives. <br>
+- To resolve that, I updated the <mark>scriptSrc</mark>, <mark>imgSrc</mark> and <mark>styleSrc</mark> in the CSP directives.
+
 ```js
 app.use(
   helmet({
@@ -152,6 +145,7 @@ app.use(
 ```
 
 The following is some of the security header configuration I used to deploy my application to production. Additionally, we need to implement CORS (Cross-Origin Resource Sharing), which is not included in Helmet. CORS can be quite tricky, so I will save that topic for another post. Thank you for reading until the end!
+
 ```js
 import helmet from "helmet";
 

@@ -1,0 +1,141 @@
+{%- comment -%}
+  Case-study page for one project. Rendered by `_layouts/page.html` for documents in `_projects/`.
+{%- endcomment -%}
+
+{%- include portfolio/collect.html -%}
+
+{%- comment -%}
+  Jekyll reuses cached layout templates, so variables assigned here can survive into the
+  next page's render. Reset everything that is only assigned conditionally.
+{%- endcomment -%}
+{%- assign pf_index = nil -%}
+{%- assign pf_prev = nil -%}
+{%- assign pf_next = nil -%}
+
+{%- for p in pf_projects -%}
+  {%- if p.url == page.url -%}
+    {%- assign pf_index = forloop.index0 -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if pf_index > 0 -%}
+  {%- assign pf_prev_index = pf_index | minus: 1 -%}
+  {%- assign pf_prev = pf_projects[pf_prev_index] -%}
+{%- endif -%}
+{%- assign pf_next_index = pf_index | plus: 1 -%}
+{%- if pf_next_index < pf_projects.size -%}
+  {%- assign pf_next = pf_projects[pf_next_index] -%}
+{%- endif -%}
+
+{%- assign cover = page.image.path | default: page.image -%}
+{%- assign cover_alt = page.image.alt | default: page.title -%}
+{%- assign body = content | strip -%}
+
+<article class="project px-1">
+  <a class="project__back" href="{{ '/portfolio/' | relative_url }}">
+    <i class="fas fa-arrow-left" aria-hidden="true"></i> All projects
+  </a>
+
+  <header class="project__hero">
+    <div class="project__hero-bg" aria-hidden="true"></div>
+
+    <p class="project__eyebrow">
+      {% if page.category %}<span>{{ page.category }}</span>{% endif %}
+      <span>{{ page.date | date: '%Y' }}</span>
+      {% if page.status %}
+        <span class="pf-status pf-status--{{ page.status | slugify }}">{{ page.status }}</span>
+      {% endif %}
+    </p>
+
+    <h1 class="project__title">{{ page.title }}</h1>
+
+    {% if page.description %}
+      <p class="project__summary">{{ page.description }}</p>
+    {% endif %}
+
+    {% if page.links.demo or page.links.github or page.links.post %}
+      <div class="project__actions">
+        {% if page.links.demo %}
+          <a class="nt-btn nt-btn--primary" href="{{ page.links.demo }}" target="_blank" rel="noopener noreferrer">
+            <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            <span>Live demo</span>
+          </a>
+        {% endif %}
+        {% if page.links.github %}
+          <a
+            class="nt-btn{% unless page.links.demo %} nt-btn--primary{% endunless %}"
+            href="{{ page.links.github }}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+            <span>Source code</span>
+          </a>
+        {% endif %}
+        {% if page.links.post %}
+          <a class="nt-btn" href="{{ page.links.post | relative_url }}">
+            <i class="fas fa-book-open" aria-hidden="true"></i>
+            <span>Read the write-up</span>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </header>
+
+  {% if cover %}
+    <figure class="project__cover">
+      <img src="{{ cover | relative_url }}" alt="{{ cover_alt | escape }}">
+    </figure>
+  {% endif %}
+
+  <div class="project__layout{% if body == '' %} project__layout--facts-only{% endif %}">
+    <aside class="project__facts" aria-label="Project details">
+      <dl>
+        {% if page.role %}
+          <div><dt>Role</dt><dd>{{ page.role }}</dd></div>
+        {% endif %}
+        <div>
+          <dt>Timeline</dt>
+          <dd>{% if page.timeline %}{{ page.timeline }}{% else %}{{ page.date | date: '%Y' }}{% endif %}</dd>
+        </div>
+        {% if page.team %}
+          <div><dt>Team</dt><dd>{{ page.team }}</dd></div>
+        {% endif %}
+        {% if page.category %}
+          <div><dt>Category</dt><dd>{{ page.category }}</dd></div>
+        {% endif %}
+      </dl>
+
+      {% if page.tech.size > 0 %}
+        <p class="project__label">Tech stack</p>
+        <ul class="pf-tech">
+          {% for t in page.tech %}
+            <li>{{ t }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </aside>
+
+    {% unless body == '' %}
+      <div class="project__body content">
+        {{ content }}
+      </div>
+    {% endunless %}
+  </div>
+
+  {% if pf_prev or pf_next %}
+    <nav class="project__nav" aria-label="More projects">
+      {% if pf_prev %}
+        <a class="project__nav-link project__nav-link--prev" href="{{ pf_prev.url | relative_url }}">
+          <span class="project__nav-dir"><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</span>
+          <span class="project__nav-title">{{ pf_prev.title }}</span>
+        </a>
+      {% endif %}
+      {% if pf_next %}
+        <a class="project__nav-link project__nav-link--next" href="{{ pf_next.url | relative_url }}">
+          <span class="project__nav-dir">Next <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+          <span class="project__nav-title">{{ pf_next.title }}</span>
+        </a>
+      {% endif %}
+    </nav>
+  {% endif %}
+</article>

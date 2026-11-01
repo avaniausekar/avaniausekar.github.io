@@ -1,0 +1,28 @@
+{%- comment -%}
+  One side of the software / hardware split on the portfolio page.
+  Usage: {% include portfolio/column.html type='software' title='Software' icon='fas fa-code'
+                                          projects=pf_software soon='...' %}
+{%- endcomment -%}
+
+<section class="pf-col pf-col--{{ include.type }}" aria-labelledby="pf-{{ include.type }}-title">
+  <h2 id="pf-{{ include.type }}-title" class="pf-col__title">
+    <i class="{{ include.icon }}" aria-hidden="true"></i>
+    {{ include.title }}
+  </h2>
+
+  {% if include.projects.size > 0 %}
+    <div class="pf-grid-wrap">
+      <div class="pf-grid">
+        {% for p in include.projects %}
+          {% include portfolio/card.html project=p %}
+        {% endfor %}
+      </div>
+    </div>
+    <p class="pf-col__note" data-col-none hidden>No {{ include.type }} projects match that filter.</p>
+  {% else %}
+    <p class="pf-col__note pf-col__note--soon">
+      <i class="far fa-clock" aria-hidden="true"></i>
+      {{ include.soon }}
+    </p>
+  {% endif %}
+</section>

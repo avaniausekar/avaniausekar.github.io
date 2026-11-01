@@ -1,0 +1,23 @@
+# Icon and one-line description for each post category.
+# Used by the home page intro and the About page. Keys must match the category names used in posts.
+# Icons: https://fontawesome.com/search?ic=free
+
+Networking:
+  icon: fas fa-network-wired
+  description: Interesting networks concepts
+
+Operating Systems:
+  icon: fas fa-microchip
+  description: Cool operating systems stuff
+
+Full Stack:
+  icon: fas fa-layer-group
+  description: Building web apps, front to back
+
+Tech Views:
+  icon: far fa-lightbulb
+  description: My tech insights
+
+Miscellaneous:
+  icon: fas fa-shapes
+  description: Ponderings about unrelated stuff

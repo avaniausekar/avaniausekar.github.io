@@ -1,0 +1,28 @@
+# Text for the intro card on the home page and the call-to-action on the portfolio page.
+# Edit freely — changes show up on the next build (no server restart needed).
+
+# Photo shown in the home-page card (portrait works best). Defaults to the sidebar avatar.
+photo: /assets/images/avatar.jpg
+
+greeting: "Hi, I'm Avani!"
+
+summary: >-
+  Welcome to my blog! I'm passionate about how things work and sharing what I learn. 
+
+# Markdown is allowed here, e.g. **bold** and [links](/portfolio/).
+explore: >-
+  Check out my **[projects](/portfolio/)** in the portfolio, or browse posts by
+  **[category](/categories/)** and **[tag](/tags/)** using the tabs in the sidebar.
+  Scroll down for the **latest posts**. Thanks for visiting!
+
+# The "Latest News" list under the intro comes from `_data/news.yml`.
+
+# Optional: link to a PDF résumé (e.g. /assets/resume.pdf). Leave empty to hide the button on the portfolio page.
+resume:
+
+# Call-to-action at the bottom of the portfolio page
+collaborate:
+  title: "Let's build something together"
+  text: >-
+    I'm always happy to talk about interesting problems and to collaborate on open-source projects.
+    Feel free to reach out.

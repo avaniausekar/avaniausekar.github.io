@@ -1,0 +1,7 @@
+<!-- Custom additions, included by the theme at the end of <head> -->
+{% unless site.theme_mode == 'light' or site.theme_mode == 'dark' %}
+  <script defer src="{{ '/assets/js/custom/theme-toggle.js' | relative_url }}"></script>
+{% endunless %}
+{% if page.layout == 'post' %}
+  <script defer src="{{ '/assets/js/custom/reading-progress.js' | relative_url }}"></script>
+{% endif %}

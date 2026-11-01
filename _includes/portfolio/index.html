@@ -1,0 +1,147 @@
+{%- comment -%}
+  The portfolio page. Rendered by `_tabs/portfolio.html`.
+  Projects are Markdown files in `_projects/`; see `_projects/_template.md` for every supported field.
+  Projects are split into two columns by their `type` (software, the default, or hardware).
+{%- endcomment -%}
+
+{%- include portfolio/collect.html -%}
+
+{%- assign pf_hardware = pf_projects | where_exp: 'p', "p.type == 'hardware' or p.type == 'Hardware'" -%}
+{%- assign pf_software = pf_projects | where_exp: 'p', "p.type != 'hardware' and p.type != 'Hardware'" -%}
+
+{%- assign pf_categories = '' | split: '' -%}
+{%- for p in pf_projects -%}
+  {%- if p.category -%}{%- assign pf_categories = pf_categories | push: p.category -%}{%- endif -%}
+{%- endfor -%}
+{%- assign pf_categories = pf_categories | uniq | sort -%}
+
+{%- assign profile = site.data.profile -%}
+{%- assign linkedin = site.data.contact | where: 'type', 'linkedin' | first -%}
+
+<article class="portfolio px-1">
+  {%- comment -%} Same title element as Chirpy's other pages (hidden on small screens, where the top bar shows it) {%- endcomment -%}
+  <h1 class="dynamic-title">{{ page.title }}</h1>
+
+  {% if pf_projects.size > 0 %}
+    {%- comment -%}
+      Filters only appear once there are enough projects for them to be useful.
+      (Liquid has no operator precedence, so the conditions are computed separately.)
+    {%- endcomment -%}
+    {%- assign pf_show_filters = false -%}
+    {%- if pf_categories.size > 1 and pf_projects.size > 4 -%}{%- assign pf_show_filters = true -%}{%- endif -%}
+    {%- assign pf_show_search = false -%}
+    {%- if pf_projects.size > 6 -%}{%- assign pf_show_search = true -%}{%- endif -%}
+
+    {% if pf_show_filters or pf_show_search %}
+      <div class="pf-toolbar">
+        {% if pf_show_filters %}
+          <div class="pf-filters" role="group" aria-label="Filter projects by category">
+            <button type="button" class="pf-filter is-active" data-filter="all" aria-pressed="true">
+              All <span class="pf-filter__count">{{ pf_projects.size }}</span>
+            </button>
+            {% for cat in pf_categories %}
+              {% assign cat_count = pf_projects | where: 'category', cat | size %}
+              <button type="button" class="pf-filter" data-filter="{{ cat | slugify }}" aria-pressed="false">
+                {{ cat }} <span class="pf-filter__count">{{ cat_count }}</span>
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if pf_show_search %}
+          <label class="pf-search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <span class="nt-sr-only">Search projects</span>
+            <input id="pf-search" type="search" placeholder="Search name or tech…" autocomplete="off">
+          </label>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% include portfolio/art-strip.html %}
+
+    <div class="pf-split-wrap">
+      <div class="pf-split">
+        {% include portfolio/column.html
+          type='software'
+          title='Software'
+          icon='fas fa-code'
+          projects=pf_software
+          soon='Software projects are on their way.'
+        %}
+
+        <div class="pf-split__line" aria-hidden="true"></div>
+
+        {% include portfolio/column.html
+          type='hardware'
+          title='Hardware'
+          icon='fas fa-microchip'
+          projects=pf_hardware
+          soon='Hardware projects are on their way.'
+        %}
+      </div>
+    </div>
+
+    <p id="pf-no-results" class="pf-no-results" hidden>
+      No projects match that filter.
+      <button type="button" class="pf-reset" data-filter-reset>Show all projects</button>
+    </p>
+  {% else %}
+    {% include portfolio/art-strip.html %}
+
+    <section class="pf-empty" aria-labelledby="pf-empty-title">
+      <div class="pf-empty__icon" aria-hidden="true"><i class="fas fa-flask"></i></div>
+      <h2 id="pf-empty-title">Projects are on their way</h2>
+      <p>I'm polishing a few things to show here. In the meantime, have a look at my code on GitHub or read the blog.</p>
+      <div class="pf-empty__actions">
+        <a class="nt-btn" href="{{ '/' | relative_url }}">
+          <i class="fas fa-book-open" aria-hidden="true"></i>
+          <span>Read the blog</span>
+        </a>
+      </div>
+    </section>
+  {% endif %}
+
+  <section id="pf-contact" class="pf-cta" aria-labelledby="pf-cta-title">
+    <div class="pf-cta__pattern" aria-hidden="true"></div>
+    <h2 id="pf-cta-title" class="pf-cta__title">
+      {{ profile.collaborate.title | default: "Let's build something together" }}
+    </h2>
+    {% if profile.collaborate.text %}
+      <p class="pf-cta__text">{{ profile.collaborate.text }}</p>
+    {% endif %}
+    <div class="pf-cta__actions">
+      {% if site.social.email %}
+        <a class="nt-btn nt-btn--primary" href="mailto:{{ site.social.email }}">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <span>Email me</span>
+        </a>
+      {% endif %}
+      {% if linkedin.url %}
+        <a class="nt-btn" href="{{ linkedin.url }}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span>LinkedIn</span>
+        </a>
+      {% endif %}
+      {% if site.github.username %}
+        <a
+          class="nt-btn"
+          href="https://github.com/{{ site.github.username }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span>GitHub</span>
+        </a>
+      {% endif %}
+      {% if profile.resume %}
+        <a class="nt-btn" href="{{ profile.resume | relative_url }}">
+          <i class="far fa-file-lines" aria-hidden="true"></i>
+          <span>Résumé</span>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+</article>
+
+<script defer src="{{ '/assets/js/custom/portfolio.js' | relative_url }}"></script>

@@ -1,15 +1,10 @@
 ---
-layout: single
 title:  "Deploy a Python Server with Flask on Windows Apache Server"
 date:   2023-07-22 09:30:45 +0530
-categories: 
-        - tech-views
-tags:
-        - installation
-        - flask
-toc: true
-header:
-  teaser: /images/apache_flask.png
+categories: [Tech Views]
+tags: [installation, flask]
+# Keeps the URL from the old site
+permalink: /tech-views/Ways-to-deploy-a-python-server-on-apache/
 ---
 Recently I programmed a TLS/SSL checker web app - which checks which tls protocol a website is using and also gives a list of SSL vulnerablities the website is prone to.
 I programmed this script in python using flask framework and now I wanted to deploy it to the server.
@@ -19,26 +14,30 @@ So, these are my learnings and some useful links - you can read them so that you
 
 
 ## Prerequisites:
-* Python - can be downloaded from [<span style="color: blue;"> https://www.python.org/downloads/</span>](https://www.python.org/downloads/)
-* Flask - can be installed by typing the following command in cmd 
-```
+* Python - can be downloaded from [https://www.python.org/downloads/](https://www.python.org/downloads/)
+* Flask - can be installed by typing the following command in cmd
+
+```console
 $ pip install flask
 ```
+
 * WfastCGI module - installed by typing the following command in cmd
-```
+
+```console
 $ pip install wfastcgi
 ```
+
 ----
 
 ## **Deploying using Windows IIS Server:**
 
-1. I have used this [<span style="color: blue;">link</span>](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3) to install until step IV (As given in the article) with some changes.
-**CGI** module will be found in 
+1. I have used this [link](https://medium.com/@dpralay07/deploy-a-python-flask-application-in-iis-server-and-run-on-machine-ip-address-ddb81df8edf3) to install until step IV (As given in the article) with some changes.
+**CGI** module will be found in
 *`Server Roles > Web Server(IIS) > Web Server > Application Development > CGI`* \
 (If it is not found at the exact location as given in the above article)
 
-2. After completing all steps – if you get *internal server* error when you access the website url - you can refer these steps: reference [<span style="color: blue;"> Error an unknown FastCGI error occurred</span>](https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured) \
-<img src="{{ site.baseurl }}/images/help.png"> 
+2. After completing all steps – if you get *internal server* error when you access the website url - you can refer these steps: reference [Error an unknown FastCGI error occurred](https://stackoverflow.com/questions/6176093/http-error-500-0-internal-server-error-an-unknown-fastcgi-error-occured) \
+![Fix for the "unknown FastCGI error" in IIS](/images/help.png)
 
 3. To deploy it on port eg say :4000:
 - Go to IIS Manager
@@ -53,12 +52,8 @@ $ pip install wfastcgi
 - **Deploying using WAMP Server :**
 
 1. This article is very apt but I might go into more details about this installation in coming weeks.
-[https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed](https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed) 
+[https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed](https://thilinamad.medium.com/flask-app-deployment-in-windows-apache-server-mod-wsgi-82e1cfeeb2ed)
 
 
 >Thank - You for reading !
 >> Avani
-
-
-
-

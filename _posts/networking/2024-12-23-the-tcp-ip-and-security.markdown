@@ -1,19 +1,14 @@
 ---
-layout: single
 title:  "The TCP/IP Model and Security"
 date:   2024-12-23 10:30:45 +0530
-categories: 
-        - networking
-tags: 
-        - networks 
-        - tls
-        - security
-        - tcp/ip
-toc: true
+categories: [Networking]
+tags: [networks, tls, security, tcp/ip]
+# Keeps the URL from the old site
+permalink: /networking/the-tcp-ip-and-security/
 ---
 
 The TCP/IP (Transmission Control Protocol/Internet Protocol) reference model defines how information moves from sender to receiver. TCP/IP was not originally designed with security, so we must secure the network using many external methods.  Many protocols are designed to secure network traffic at various levels. The choice of where to implement security in the stack depends on the application's and user's requirements. Regardless of where security is applied in the stack, it must provide the following fundamental services to the user:
-1.	Key management 
+1.	Key management
 2.	Confidentiality
 3.	Nonrepudiation
 4.	Integrity / Authentication
@@ -21,13 +16,13 @@ The TCP/IP (Transmission Control Protocol/Internet Protocol) reference model def
 
 The security measures implemented at different layers of the stack can offer varying services. In some instances, it is beneficial to assign certain capabilities to one layer while allocating others to a different layer. This blog explores the benefits and nuances of providing security at various levels within the TCP/IP stack.
 
-<img src="{{ site.baseurl }}/images/network-models.png">
+![The OSI and TCP/IP network models side by side](/images/network-models.png)
 
 ## Security at the Application Layer
-The application layer connects applications to the underlying network for message transmission. Host-to-host communication occurs at the application layer, so security has to be implemented in end hosts. Applications should design their security mechanisms when their specific needs cannot be met by the lower layers. One example of this is non-repudiation. The lower layers struggle to provide non-repudiation services because they do not have access to the data. Some examples of the security mechanisms implemented at the applicaion layer include [<span style="color: blue;"> PGP</span>](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), [<span style="color: blue;">Kerberos</span>](https://web.mit.edu/kerberos/), and Secure Shell.
+The application layer connects applications to the underlying network for message transmission. Host-to-host communication occurs at the application layer, so security has to be implemented in end hosts. Applications should design their security mechanisms when their specific needs cannot be met by the lower layers. One example of this is non-repudiation. The lower layers struggle to provide non-repudiation services because they do not have access to the data. Some examples of the security mechanisms implemented at the applicaion layer include [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), [Kerberos](https://web.mit.edu/kerberos/), and Secure Shell.
 ### Benefits
 - Executing in the context of the user enables easy access to user credentials such as private keys.
-- Ensures complete access to the data the user aims to protect, making it easier to offer services like non-repudiation. 
+- Ensures complete access to the data the user aims to protect, making it easier to offer services like non-repudiation.
 - An application can be extended without relying on the operating system to provide these services.
 
 ### Key Considerations
@@ -68,6 +63,5 @@ The Data Link layer is responsible for communications between end-device network
 - The two entities involved in communication have to be physically connected.
 
 ## References
-1. Doraswamy, N. and Harkins, D. (1999) IPSec: The New Security Standard for the internet, intranets, and Virtual Private Networks. Upper Saddle River, NJ: Prentice Hall. 
-2. [<span style="color: blue;"> What is TLS </span>](https://www.spiceworks.com/it-security/vulnerability-management/articles/what-is-ssl-tls/)
-
+1. Doraswamy, N. and Harkins, D. (1999) IPSec: The New Security Standard for the internet, intranets, and Virtual Private Networks. Upper Saddle River, NJ: Prentice Hall.
+2. [What is TLS](https://www.spiceworks.com/it-security/vulnerability-management/articles/what-is-ssl-tls/)

@@ -1,0 +1,21 @@
+#  The contact options shown at the bottom of the sidebar.
+#  Icons powered by <https://fontawesome.com/>
+
+- type: github
+  icon: "fab fa-github"
+
+- type: linkedin
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/avaniausekar"
+
+- type: email
+  icon: "fas fa-envelope"
+  noblank: true # open link in current tab
+
+- type: rss
+  icon: "fas fa-rss"
+  noblank: true
+
+# Shown only when `twitter.username` is set in _config.yml
+- type: twitter
+  icon: "fa-brands fa-x-twitter"

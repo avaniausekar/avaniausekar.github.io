@@ -1,0 +1,11 @@
+# "Latest News" on the home page. Newest first; the first 3 items are shown.
+# `content` supports Markdown, e.g. [links](/portfolio/) and **bold**.
+
+- date: 11/2026
+  content: Launched the redesigned site, with a new [portfolio](/portfolio/) of my projects.
+
+- date: 03/2025
+  content: "New post: [Bending Time](/miscellaneous/bending-time/), on why some minutes feel longer than others."
+
+- date: 01/2025
+  content: Wrote about the [security-header headaches](/full-stack/node-and-security-headers/) of taking a Node.js app to production.

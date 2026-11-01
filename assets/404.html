@@ -1,0 +1,35 @@
+---
+layout: page
+title: "404: Page not found"
+permalink: /404.html
+sitemap: false
+---
+
+{% include lang.html %}
+
+<p class="lead">{{ site.data.locales[lang].not_found.statement }}</p>
+
+<p>
+  The page may have moved when this site was redesigned. Try the search box at the top, or pick up from
+  one of these:
+</p>
+
+<div class="nt-404__actions">
+  <a class="nt-btn nt-btn--primary" href="{{ '/' | relative_url }}">
+    <i class="fas fa-house" aria-hidden="true"></i><span>Home</span>
+  </a>
+  <a class="nt-btn" href="{{ '/portfolio/' | relative_url }}">
+    <i class="fas fa-briefcase" aria-hidden="true"></i><span>Portfolio</span>
+  </a>
+  <a class="nt-btn" href="{{ '/archives/' | relative_url }}">
+    <i class="fas fa-archive" aria-hidden="true"></i><span>All posts</span>
+  </a>
+</div>
+
+<h2>Recent posts</h2>
+
+<ul>
+  {% for post in site.posts limit: 5 %}
+    <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+  {% endfor %}
+</ul>

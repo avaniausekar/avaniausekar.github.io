@@ -1,0 +1,49 @@
+{%- comment -%}
+  Intro card on the first page of the home page.
+  Text lives in `_data/profile.yml`, news items in `_data/news.yml`.
+  The photo is a CSS background (not an <img>) so Chirpy's content post-processor leaves it alone.
+{%- endcomment -%}
+
+{%- assign profile = site.data.profile -%}
+{%- assign photo = profile.photo | default: site.avatar -%}
+
+<section class="home-intro" aria-labelledby="home-intro-title">
+  {% if photo %}
+    <div
+      class="home-intro__photo"
+      role="img"
+      aria-label="Photo of {{ site.social.name | escape }}"
+      style="background-image: url('{{ photo | relative_url }}');"
+    ></div>
+  {% endif %}
+
+  <div class="home-intro__body">
+    <h1 id="home-intro-title" class="home-intro__title">
+      {{- profile.greeting | default: site.title | escape -}}
+    </h1>
+
+    {% if profile.summary %}
+      <p class="home-intro__lead">{{ profile.summary | escape }}</p>
+    {% endif %}
+
+    {% if profile.explore %}
+      <p class="home-intro__explore">
+        {{- profile.explore | markdownify | remove: '<p>' | remove: '</p>' | strip -}}
+      </p>
+    {% endif %}
+
+    {% if site.data.news.size > 0 %}
+      <div class="home-intro__news">
+        <h2 class="home-intro__news-title">Latest News</h2>
+        <ul>
+          {% for item in site.data.news limit: 3 %}
+            <li>
+              <strong>{{ item.date }}:</strong>
+              {{ item.content | markdownify | remove: '<p>' | remove: '</p>' | strip }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </div>
+</section>
